@@ -8,17 +8,18 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js"></script>
     <script type="text/javascript">
+      let scene, camera, renderer
       function init()
         {
-            let scene = new THREE.Scene()
+            scene = new THREE.Scene()
             scene.background = new THREE.Color( 0xdddddd )
 
-            let camera = new THREE.PerspectiveCamera( 40, window.innerWidth/window.innerHeight, 1, 5000 );
+            camera = new THREE.PerspectiveCamera( 40, window.innerWidth/window.innerHeight, 1, 5000 );
 
-            let lightsource = new THREE.AmbientLight( 0x404040, 100 );
-            scene.add( lightsource );
+            let amblight = new THREE.AmbientLight( 0x404040, 100 );
+            scene.add( amblight );
 
-            let renderer = new THREE.WebGLRenderer();
+            renderer = new THREE.WebGLRenderer();
             renderer.setSize( window.innerWidth, window.innerHeight );
             document.body.appendChild( renderer.domElement );
 

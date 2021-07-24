@@ -30,7 +30,7 @@
             document.body.appendChild( renderer.domElement );
 
             let loader = new THREE.GLTFLoader();
-            loader.load( '../public/media/model/phoenix/scene.gltf', ( gltf ) =>
+            loader.load( 'http://cdn.mauricestolk.hns.to/model/phoenix/scene.gltf', ( gltf ) =>
             {
                 scene.add( gltf.scene );
                 renderer.render( scene, camera );           

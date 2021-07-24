@@ -3,9 +3,6 @@
   <head>
     <meta charset="utf8" />
     <title>My Three.js Project v1.0</title>
-<!--     <script type="text/javascript" src="/j/three.min.js"></script> -->
-    <script type="text/javascript" src="http://cdn.mauricestolk.hns.to/three.min.js"></script>
-    <script type="text/javascript" src="http://cdn.mauricestolk.hns.to/gltfloader.js"></script>
   </head>
   <body>
     <nav></nav>
@@ -17,6 +14,9 @@
     <script type="text/javascript">
       function init()
         {
+            import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js";
+            import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js";
+            
             let scene = new THREE.Scene()
             scene.background = new THREE.Color( 0xdddddd )
 

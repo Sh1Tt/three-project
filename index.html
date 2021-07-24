@@ -5,18 +5,11 @@
     <title>My Three.js Project v1.0</title>
   </head>
   <body>
-    <nav></nav>
-    <header></header>
-    <main>
-      <canvas></canvas>
-    </main>
-    <footer></footer>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js"></script>
     <script type="text/javascript">
       function init()
         {
-            import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js";
-            import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js";
-            
             let scene = new THREE.Scene()
             scene.background = new THREE.Color( 0xdddddd )
 

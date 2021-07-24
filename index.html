@@ -24,7 +24,7 @@
             renderer.setSize( window.innerWidth, window.innerHeight );
             document.body.appendChild( renderer.domElement );
 
-            let loader = new THREE.GLTFLoader();
+            let loader = new GLTFLoader();
             loader.load( 'http://cdn.mauricestolk.hns.to/model/phoenix/scene.gltf', ( gltf ) =>
             {
                 scene.add( gltf.scene );

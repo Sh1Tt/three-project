@@ -8,7 +8,7 @@
     <script type="text/javascript">
       async function loadScripts()
       {
-        const res = await fetch( 'https://unpkg.com/three@0.128.0/build/three.min.js' )
+        const res = fetch( 'https://unpkg.com/three@0.128.0/build/three.min.js' )
         .then( res =>
         {
           const threescript = document.createElement( 'script');
@@ -20,10 +20,6 @@
           const s = document.createElement( 'script');
           s.src = 'https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js';
           document.head.appendChild( s );
-        })
-        .error( err =>
-        {
-          console.log( err )  
         })
         .done();               
       }

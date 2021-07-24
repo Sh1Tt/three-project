@@ -6,7 +6,9 @@
 <!--     <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script> -->
 <!--     <script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script> -->
     <script type="text/javascript">
-      const res = await fetch( 'https://unpkg.com/three@0.128.0/build/three.min.js' )
+      async function loadScripts()
+      {
+        const res = await fetch( 'https://unpkg.com/three@0.128.0/build/three.min.js' )
         .then( res =>
         {
           const threescript = document.createElement( 'script');
@@ -24,6 +26,8 @@
           console.log( err )  
         })
         .done();               
+      }
+      loadScripts();
     </script>
   </head>
   <body>

@@ -29,7 +29,7 @@
             
             document.body.appendChild( renderer.domElement );
 
-            let loader = new GLTFLoader();
+            let loader = new THREE.GLTFLoader();
             loader.load( 'http://cdn.mauricestolk.hns.to/model/phoenix/scene.gltf', (gltf) => 
             {
               // called when the resource is loaded

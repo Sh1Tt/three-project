@@ -22,7 +22,7 @@
             hlight = new THREE.AmbientLight( 0x404040, 100 );
             scene.add( hlight );
 
-            renderer = new THREE.WebGLRenderer({
+            renderer = new THREE.WebGL1Renderer({
               antialias:true
             });
             renderer.setSize( window.innerWidth, window.innerHeight );

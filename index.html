@@ -5,34 +5,21 @@
     <title>My Three.js Project v1.0</title>
 <!--     <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script> -->
 <!--     <script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script> -->
-    <script type="text/javascript">
-      async function loadScripts()
-      {
-        const res = fetch( 'https://unpkg.com/three@0.128.0/build/three.min.js' )
-        .then( res =>
-        {
-          const threescript = document.createElement( 'script');
-          threescript.src = res;
-          document.head.appendChild( threescript );  
-        })
-        .then( () =>
-        {
-          const s = document.createElement( 'script');
-          s.src = 'https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js';
-          document.head.appendChild( s );
-        })
-        .done();               
-      }
-      loadScripts();
-    </script>
   </head>
   <body>
-    <script type="module">
-//       import * as THREE from "http://cdn.mauricestolk.hns.to/three.module.js";
-//       import { GLTFLoader } from "https://unpkg.com/three@0.127.0/examples/jsm/loaders/GLTFLoader.js";
+    <script>
+      // Load an array of scripts in order
+      const loadScriptsInOrder = function(arrayOfJs) {
+          const promises = arrayOfJs.map(function(url) {
+              return loadScript(url);
+          });
+          return waterfall(promises);
+      };
+      
       
       let scene, camera, renderer, hlight
-      function init()
+      
+      const init = () =>
         {
             scene = new THREE.Scene()
             scene.background = new THREE.Color( 0xdddddd )
@@ -66,7 +53,13 @@
               console.error( error )
             });
         }
-        init();
+        loadScriptsInOrder([
+            'https://unpkg.com/three@0.128.0/build/three.min.js',
+            'https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js'
+        ]).then( () =>
+        {
+            init();
+        });
     </script>
   </body>
 </html>

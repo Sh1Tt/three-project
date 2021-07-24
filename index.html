@@ -25,10 +25,21 @@
             document.body.appendChild( renderer.domElement );
 
             let loader = new GLTFLoader();
-            loader.load( 'http://cdn.mauricestolk.hns.to/model/phoenix/scene.gltf', ( gltf ) =>
+            loader.load( 'http://cdn.mauricestolk.hns.to/model/phoenix/scene.gltf', (gltf) => 
             {
-                scene.add( gltf.scene );
-                renderer.render( scene, camera );           
+              // called when the resource is loaded
+              scene.add( gltf.scene );
+              renderer.render( scene, camera );
+            },
+            (xhr) => 
+            {
+              // called while loading is progressing
+              console.log(`${(xhr.loaded / xhr.total) * 100}% loaded`);
+            },
+            (error) => 
+            {
+              // called when loading has errors
+              console.error('An error happened', error);
             });
         }
         init();

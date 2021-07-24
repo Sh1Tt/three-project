@@ -45,6 +45,7 @@
           const promises = arrayOfJs.map(function(url) {
               return loadScript(url);
           });
+          console.log( promises );
           return waterfall(promises);
       };
       

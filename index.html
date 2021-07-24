@@ -3,13 +3,15 @@
   <head>
     <meta charset="utf8" />
     <title>My Three.js Project v1.0</title>
+    <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
   </head>
   <body>
     <script type="module">
-      import * as THREE from "http://cdn.mauricestolk.hns.to/three.module.js";
-      import { GLTFLoader } from "https://unpkg.com/three@0.127.0/examples/jsm/loaders/GLTFLoader.js";
+//       import * as THREE from "http://cdn.mauricestolk.hns.to/three.module.js";
+//       import { GLTFLoader } from "https://unpkg.com/three@0.127.0/examples/jsm/loaders/GLTFLoader.js";
       
-      let scene, camera, renderer
+      let scene, camera, renderer, hlight
       function init()
         {
             scene = new THREE.Scene()
@@ -17,11 +19,14 @@
 
             camera = new THREE.PerspectiveCamera( 40, window.innerWidth/window.innerHeight, 1, 5000 );
 
-            let amblight = new THREE.AmbientLight( 0x404040, 100 );
-            scene.add( amblight );
+            hlight = new THREE.AmbientLight( 0x404040, 100 );
+            scene.add( hlight );
 
-            renderer = new THREE.WebGLRenderer();
+            renderer = new THREE.WebGLRenderer({
+              antialias:true
+            });
             renderer.setSize( window.innerWidth, window.innerHeight );
+            
             document.body.appendChild( renderer.domElement );
 
             let loader = new GLTFLoader();
@@ -35,6 +40,10 @@
             {
               // called while loading is progressing
               console.log(`${(xhr.loaded / xhr.total) * 100}% loaded`);
+            },
+            (error) =>
+            {
+              console.error( error )
             });
         }
         init();

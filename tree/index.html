@@ -69,7 +69,7 @@
 				document.body.appendChild( container );
 
 				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
-				camera.position.z = 0;
+				camera.position.z = 250;
 
 				// scene
 
@@ -92,13 +92,13 @@
 
 					} );
 
-					object.position.y = 0;
+					object.position.y = - 95;
 					scene.add( object );
 
 				}
 
 				const manager = new THREE.LoadingManager( loadModel );
-				
+
 				manager.onProgress = function ( item, loaded, total ) {
 
 					console.log( item, loaded, total );
@@ -142,6 +142,8 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
 
+				document.addEventListener( 'mousemove', onDocumentMouseMove );
+
 				//
 
 				window.addEventListener( 'resize', onWindowResize );
@@ -157,6 +159,13 @@
 				camera.updateProjectionMatrix();
 
 				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+			function onDocumentMouseMove( event ) {
+
+				mouseX = ( event.clientX - windowHalfX ) / 2;
+				mouseY = ( event.clientY - windowHalfY ) / 2;
 
 			}
 

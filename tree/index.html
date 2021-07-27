@@ -119,11 +119,7 @@
 						const percentComplete = xhr.loaded / xhr.total * 100;
 						const readablePercentage = () => Math.round( percentComplete, 2 )
 						// console.log( 'model ' + Math.round( percentComplete, 2 ) + '% downloaded' );
-						if( readablePercentage() === 100 )
-						{
-							loadProgress.parentNode.removeChild( loadProgress );	
-						}
-						loadProgress.innerText = `${readablePercentage()}% loaded..`;
+						loadProgress.innerText = ( readablePercentage() === 100 ? "" : `${readablePercentage()}% loaded..` );
 					}
 
 				}
@@ -173,8 +169,8 @@
 
 			function render() {
 
-				camera.position.x += ( camera.position.x ) * .05;
-				camera.position.y += ( camera.position.y ) * .05;
+				camera.position.x += ( - 0 - camera.position.x ) * .05;
+				camera.position.y += ( - 0 - camera.position.y ) * .05;
 
 				camera.lookAt( scene.position );
 

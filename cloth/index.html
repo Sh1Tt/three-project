@@ -464,8 +464,19 @@
 				// _?
 
 				function loadModel() {
-					__obj.position.y = - 62;
-					scene.add( __obj );
+					object.traverse( function ( child ) {
+
+						if ( child.isMesh ) child.material.map = texture;
+
+					} );
+					object.position.x = - 125;
+					object.position.y = - 62;
+					object.scale.set( 3, 3, 3 );
+					object.receiveShadow = true;
+					object.castShadow = true;
+// 					object.matrixAutoUpdate = true;
+// 					object.updateMatrix();
+					scene.add( object );
 				}
 
 				// manager

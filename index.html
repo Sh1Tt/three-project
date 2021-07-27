@@ -3,97 +3,15 @@
   <head>
     <meta charset="utf8" />
     <title>My Three.js Project v1.0</title>
-<!--     <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script> -->
-<!--     <script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script> -->
+    <meta name="title" content="My Three.js Project v1.0">
+    <meta name="description" content="Trying to hack some different projects together, in order to create the desired scenery">
+    <!--<script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>--><!--<script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>-->
   </head>
   <body>
-    <script>
-      // Load a script from given `url`
-      const loadScript = function(url) {
-          return new Promise(function(resolve, reject) {
-              const script = document.createElement('script');
-              script.src = url;
-
-              script.addEventListener('load', function() {
-                  // The script is loaded completely
-                  resolve(true);
-              });
-
-              document.head.appendChild(script);
-          });
-      };
-
-      // Perform all promises in the order
-      const waterfall = function(promises) {
-          return promises.reduce(
-              function(p, c) {
-                  // Waiting for `p` completed
-                  return p.then(function() {
-                      // and then `c`
-                      return c().then(function(result) {
-                          return true;
-                      });
-                  });
-              },
-              // The initial value passed to the reduce method
-              Promise.resolve([])
-          );
-      };
-
-      // Load an array of scripts in order
-      const loadScriptsInOrder = function(arrayOfJs) {
-          const promises = arrayOfJs.map(function(url) {
-              return loadScript(url);
-          });
-          console.log( promises );
-          return waterfall(promises);
-      };
+    <script type="module">
+      import * as THREE from 'https://threejs.org/build/three.module.js';
+			import { OBJLoader } from 'https://threejs.org/examples/jsm/loaders/OBJLoader.js';
       
-      
-      let scene, camera, renderer, hlight
-      
-      const init = () =>
-        {
-            scene = new THREE.Scene()
-            scene.background = new THREE.Color( 0xdddddd )
-
-            camera = new THREE.PerspectiveCamera( 40, window.innerWidth/window.innerHeight, 1, 5000 );
-
-            hlight = new THREE.AmbientLight( 0x404040, 100 );
-            scene.add( hlight );
-
-            renderer = new THREE.WebGL1Renderer({
-              antialias:true
-            });
-            renderer.setSize( window.innerWidth, window.innerHeight );
-            
-            document.body.appendChild( renderer.domElement );
-
-            let loader = new THREE.GLTFLoader();
-            loader.load( 'http://cdn.mauricestolk.hns.to/model/phoenix/scene.gltf', (gltf) => 
-            {
-              // called when the resource is loaded
-              scene.add( gltf.scene );
-              renderer.render( scene, camera );
-            },
-            (xhr) => 
-            {
-              // called while loading is progressing
-              console.log(`${(xhr.loaded / xhr.total) * 100}% loaded`);
-            },
-            (error) =>
-            {
-              console.error( error )
-            });
-        }
-        loadScriptsInOrder([
-            'https://unpkg.com/three@0.128.0/build/three.min.js',
-            'https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js',
-        ])
-        .then(function()
-        {
-            init();
-        });
     </script>
   </body>
 </html>

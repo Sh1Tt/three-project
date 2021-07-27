@@ -35,8 +35,9 @@
 			
 			// -- custom deps.
 			const customTextureImage = 'http://cdn.mauricestolk.hns.to/shirt_upsidedown.jpg';
+			
 			const koenigiiTree = 'http://cdn.mauricestolk.hns.to/model/koenigii-tree/as12_8.obj';
-				
+			const treeTexture = 'http://cdn.mauricestolk.hns.to/model/tree-32/1236954294_31.jpg';	
 			
 			/*
 			 * Cloth Simulation using a relaxed constraints solver
@@ -486,7 +487,7 @@
 				// texture
 
 				const textureLoader = new THREE.TextureLoader( manager );
-				const texture = textureLoader.load( 'https://github.com/mrdoob/three.js/blob/master/examples/textures/uv_grid_opengl.jpg' );
+				const texture = textureLoader.load( treeTexture );
 
 				// model
 

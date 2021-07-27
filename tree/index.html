@@ -119,7 +119,12 @@
 						const percentComplete = xhr.loaded / xhr.total * 100;
 						const readablePercentage = () => Math.round( percentComplete, 2 )
 						// console.log( 'model ' + Math.round( percentComplete, 2 ) + '% downloaded' );
-						tracker.innerText = (readablePercentage() == 100 ? "" : `${readablePercentage()}% loaded..` );
+						if( readablePercentage() === 100 )
+						{
+							tracker.parentNode.parentNode.removeChild( tracker.parentNode );	
+						}
+						tracker.innerText = `${readablePercentage()}% loaded..`;
+						
 					}
 
 				}

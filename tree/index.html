@@ -22,8 +22,6 @@
 
 			let camera, scene, renderer;
 
-			let mouseX = 0, mouseY = 0;
-
 			let windowHalfX = window.innerWidth / 2;
 			let windowHalfY = window.innerHeight / 2;
 
@@ -62,7 +60,7 @@
 
 					} );
 
-					object.position.y = 0;
+					object.position.y = 0 ;
 					scene.add( object );
 
 				}
@@ -109,8 +107,6 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
 
-				document.addEventListener( 'mousemove', onDocumentMouseMove );
-
 				//
 
 				window.addEventListener( 'resize', onWindowResize );
@@ -129,13 +125,6 @@
 
 			}
 
-			function onDocumentMouseMove( event ) {
-
-				mouseX = ( event.clientX - windowHalfX ) / 2;
-				mouseY = ( event.clientY - windowHalfY ) / 2;
-
-			}
-
 			//
 
 			function animate() {
@@ -147,8 +136,8 @@
 
 			function render() {
 
-				camera.position.x += ( mouseX - camera.position.x ) * .05;
-				camera.position.y += ( - mouseY - camera.position.y ) * .05;
+				camera.position.x += ( camera.position.x ) * .5;
+				camera.position.y += ( camera.position.y ) * .5;
 
 				camera.lookAt( scene.position );
 

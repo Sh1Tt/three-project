@@ -32,8 +32,10 @@
 
 			import { OBJLoader } from 'https://threejs.org/examples/jsm/loaders/OBJLoader.js';
 			
+			
+			// -- custom deps.
 			const customTextureImage = 'http://cdn.mauricestolk.hns.to/shirt_upsidedown.jpg';
-			const pathToObjectModel = 'http://cdn.mauricestolk.hns.to/model/koenigii-tree/as12_8.obj';
+			const koenigiiTree = 'http://cdn.mauricestolk.hns.to/model/koenigii-tree/as12_8.obj';
 				
 			
 			/*
@@ -458,40 +460,63 @@
 
 				scene.add( light );
 
+				// manager
+
+				function loadModel() {
+
+					object.traverse( function ( child ) {
+
+						if ( child.isMesh ) child.material.map = texture;
+
+					} );
+
+					object.position.y = - 95;
+					scene.add( object );
+
+				}
+
+				const manager = new THREE.LoadingManager( loadModel );
+
+				manager.onProgress = function ( item, loaded, total ) {
+
+					console.log( item, loaded, total );
+
+				};
 				
-				// TREE [OBJECT] MODEL
-				// -----------------------------------------------------------------------------------------
-				// instantiate a .obj-loader
-				const objLoader = new OBJLoader();
+				// texture
 
-				// load a resource
-				objLoader.load(
-					// resource URL
-					pathToObjectModel,
-					// called when resource is loaded
-					function ( object ) {
+				const textureLoader = new THREE.TextureLoader( manager );
+				const texture = textureLoader.load( 'https://github.com/mrdoob/three.js/blob/master/examples/textures/uv_grid_opengl.jpg' );
 
-						scene.add( object );
+				// model
 
-					},
-					// called when loading is in progresses
-					function ( xhr ) {
+				function __onProgress( xhr ) {
 
-						console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+					if ( xhr.lengthComputable ) {
 
-					},
-					// called when loading has errors
-					function ( error ) {
-
-						console.log( 'An error happened' );
+						const percentComplete = xhr.loaded / xhr.total * 100;
+						console.log( 'model ' + Math.round( percentComplete, 2 ) + '% downloaded' );
 
 					}
-				);
+
+				}
+
+				function __onError() {}
+
+				const objLoader = new OBJLoader( manager );
+				objLoader.load( koenigiiTree, function ( obj ) {
+
+					object = obj;
+
+				}, __onProgress, __onError );
+
+				//
+				
 				
 				// cloth material
 
-				const loader = new THREE.TextureLoader();
-				const clothTexture = loader.load( customTextureImage );
+				const clothTextureloader = new THREE.TextureLoader();
+				const clothTexture = clothTextureloader.load( customTextureImage );
 				clothTexture.anisotropy = 16;
 
 				const clothMaterial = new THREE.MeshLambertMaterial( {

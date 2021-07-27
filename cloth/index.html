@@ -460,6 +460,20 @@
 				light.shadow.camera.far = 1000;
 
 				scene.add( light );
+				
+				const purpleLight = new THREE.SpotLight( 0x800080 );
+				purpleLight.position.set( 150, -250, 75 );
+				purpleLight.angle = 90deg;
+				purpleLight.castShadow = true;
+				
+				purpleLight.shadow.mapSize.width = 1024;
+				purpleLight.shadow.mapSize.height = 1024;
+				
+				purpleLight.shadow.camera.near = 500;
+				purpleLight.shadow.camera.far = 4000;
+				purpleLight.shadow.camera.fov = 30;
+				
+				scene.add( purpleLight );
 
 				// _?
 

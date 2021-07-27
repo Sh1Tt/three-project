@@ -110,7 +110,7 @@
 
 				// model
 
-				const tracker = document.querySelector( `[data-progress="model"]` );
+				const loadProgress = document.querySelector( `[data-progress="model"]` );
 				
 				function onProgress( xhr ) {
 
@@ -121,7 +121,7 @@
 						// console.log( 'model ' + Math.round( percentComplete, 2 ) + '% downloaded' );
 						if( readablePercentage() === 100 )
 						{
-							tracker.parentNode.parentNode.removeChild( tracker.parentNode );	
+							loadProgress.parentNode.removeChild( loadProgress );	
 						}
 						tracker.innerText = `${readablePercentage()}% loaded..`;
 						

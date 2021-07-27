@@ -31,6 +31,9 @@
 			import { OrbitControls } from 'https://threejs.org/examples/jsm/controls/OrbitControls.js';
 			
 			const customTextureImage = 'http://cdn.mauricestolk.hns.to/shirt_upsidedown.jpg';
+			const pathToObjectModel = 'http://cdn.mauricestolk.hns.to/model/koenigii-tree/as12_8.obj';
+				
+			
 			/*
 			 * Cloth Simulation using a relaxed constraints solver
 			 */
@@ -453,6 +456,36 @@
 
 				scene.add( light );
 
+				
+				// TREE [OBJECT] MODEL
+				// -----------------------------------------------------------------------------------------
+				// instantiate a .obj-loader
+				const objLoader = new OBJLoader();
+
+				// load a resource
+				objLoader.load(
+					// resource URL
+					pathToObjectModel,
+					// called when resource is loaded
+					function ( object ) {
+
+						scene.add( object );
+
+					},
+					// called when loading is in progresses
+					function ( xhr ) {
+
+						console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+					},
+					// called when loading has errors
+					function ( error ) {
+
+						console.log( 'An error happened' );
+
+					}
+				);
+				
 				// cloth material
 
 				const loader = new THREE.TextureLoader();

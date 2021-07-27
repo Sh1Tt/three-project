@@ -461,7 +461,7 @@
 
 				scene.add( light );
 
-				// manager
+				// _?
 
 				function loadModel() {
 
@@ -471,11 +471,15 @@
 
 					} );
 
-					__obj.position.y = - 1;
+					__obj.position.y = - 250;
+					__obj.scale.set( 10, 10, 10 );
+					__obj.castShadow = true;
 					scene.add( __obj );
 
 				}
 
+				// manager
+				
 				const manager = new THREE.LoadingManager( loadModel );
 
 				manager.onProgress = function ( item, loaded, total ) {
@@ -506,6 +510,7 @@
 				function __onError() {}
 
 				const objLoader = new OBJLoader( manager );
+				
 				objLoader.load( koenigiiTree, function ( obj ) {
 
 					object = obj;
@@ -513,7 +518,6 @@
 				}, __onProgress, __onError );
 
 				//
-				
 				
 				// cloth material
 

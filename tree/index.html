@@ -52,6 +52,8 @@
 
 			let camera, scene, renderer;
 
+			let mouseX = 0, mouseY = 0;
+
 			let windowHalfX = window.innerWidth / 2;
 			let windowHalfY = window.innerHeight / 2;
 
@@ -169,8 +171,8 @@
 
 			function render() {
 
-				camera.position.x += ( - 0 - camera.position.x ) * .05;
-				camera.position.y += ( - 0 - camera.position.y ) * .05;
+				camera.position.x += ( mouseX - camera.position.x ) * .05;
+				camera.position.y += ( - mouseY - camera.position.y ) * .05;
 
 				camera.lookAt( scene.position );
 

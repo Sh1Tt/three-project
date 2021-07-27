@@ -464,14 +464,15 @@
 				// _?
 
 				function loadModel() {
-					const _s = 200;
+					const _s = 225;
 					object.traverse( function ( child ) {
 
 						if ( child.isMesh ) child.material.map = texture;
 
 					} );
 					object.position.x = - 125;
-					object.position.y = - ( 375 / 2 );
+					object.position.y = - 250;
+					object.position.z = - 10;
 					object.scale.set( _s, _s, _s );
 					object.receiveShadow = true;
 					object.castShadow = true;

@@ -53,6 +53,11 @@
 			let camera, scene, renderer;
 
 			let mouseX = 0, mouseY = 0;
+			let positionOffset = {
+				x: 0,
+				y: 0,
+				z: 0
+			};
 
 			let windowHalfX = window.innerWidth / 2;
 			let windowHalfY = window.innerHeight / 2;
@@ -69,7 +74,7 @@
 				document.body.appendChild( container );
 
 				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
-				camera.position.z = 0;
+				camera.position.z = 250 + positionOffset.z;
 
 				// scene
 
@@ -180,8 +185,8 @@
 
 			function render() {
 
-				camera.position.x += ( ( mouseX - camera.position.x ) * .05 ) + 10;
-				camera.position.y += ( ( - mouseY - camera.position.y ) * .05 ) + 10;
+				camera.position.x += ( ( mouseX - camera.position.x ) * .05 ) + positionOffset.x;
+				camera.position.y += ( ( - mouseY - camera.position.y ) * .05 ) + positionOffset.y;
 
 				camera.lookAt( scene.position );
 

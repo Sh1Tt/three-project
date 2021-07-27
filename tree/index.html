@@ -73,7 +73,7 @@
 				container = document.createElement( 'div' );
 				document.body.appendChild( container );
 
-				camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 1, 10000 );
+				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 5000 );
 				camera.position.z = 250 + positionOffset.z;
 
 				// scene
@@ -98,7 +98,7 @@
 					} );
 
 					object.position.y = - 95;
-					object.scale.set( 25, 25, 25 );
+					object.scale.set( 15, 15, 15 );
 					object.receiveShadow = true;
 					object.castShadow = true;
 					object.matrixAutoUpdate = true;

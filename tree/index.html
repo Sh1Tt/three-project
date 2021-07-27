@@ -157,13 +157,13 @@
 
 				// create a plane geometry for the image with a width of 10
 				// and a height that preserves the image's aspect ratio
-				const __geometry = new THREE.PlaneGeometry( 60, 140 );
+				const __geometry = new THREE.PlaneGeometry( 72, 160 );
 
 				// combine our image geometry and material into a mesh
 				const __Msh = new THREE.Mesh(__geometry, __material);
 
 				// set the position of the image mesh in the x,y,z dimensions
-				__Msh.position.set( -40, -22.5, 7.5 )
+				__Msh.position.set( -45, -25, 7.5 )
 
 				// add the image to the scene
 				scene.add( __Msh );

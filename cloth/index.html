@@ -416,7 +416,7 @@
 
 			let clothGeometry;
 			let sphere;
-			let object;
+			let object, __obj;
 
 			init();
 			animate( 0 );
@@ -465,14 +465,14 @@
 
 				function loadModel() {
 
-					object.traverse( function ( child ) {
+					__obj.traverse( function ( child ) {
 
 						if ( child.isMesh ) child.material.map = texture;
 
 					} );
 
-					object.position.y = - 95;
-					scene.add( object );
+					__obj.position.y = - 95;
+					scene.add( __obj );
 
 				}
 
@@ -487,6 +487,7 @@
 				// texture
 
 				const textureLoader = new THREE.TextureLoader( manager );
+				
 				const texture = textureLoader.load( treeTexture );
 
 				// model
@@ -516,8 +517,8 @@
 				
 				// cloth material
 
-				const orgTextureLoader = new THREE.TextureLoader();
-				const clothTexture = orgTextureLoader.load( customTextureImage );
+				const textureLoader = new THREE.TextureLoader();
+				const clothTexture = textureLoader.load( customTextureImage );
 				clothTexture.anisotropy = 16;
 
 				const clothMaterial = new THREE.MeshLambertMaterial( {
@@ -556,7 +557,7 @@
 
 				// ground
 
-				const groundTexture = orgTextureLoader.load( 'https://threejs.org/examples/textures/terrain/grasslight-big.jpg' );
+				const groundTexture = textureLoader.load( 'https://threejs.org/examples/textures/terrain/grasslight-big.jpg' );
 				groundTexture.wrapS = groundTexture.wrapT = THREE.RepeatWrapping;
 				groundTexture.repeat.set( 25, 25 );
 				groundTexture.anisotropy = 16;

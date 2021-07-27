@@ -515,8 +515,8 @@
 				
 				// cloth material
 
-				const clothTextureloader = new THREE.TextureLoader();
-				const clothTexture = clothTextureloader.load( customTextureImage );
+				const orgTextureLoader = new THREE.TextureLoader();
+				const clothTexture = orgTextureLoader.load( customTextureImage );
 				clothTexture.anisotropy = 16;
 
 				const clothMaterial = new THREE.MeshLambertMaterial( {
@@ -555,7 +555,7 @@
 
 				// ground
 
-				const groundTexture = loader.load( 'https://threejs.org/examples/textures/terrain/grasslight-big.jpg' );
+				const groundTexture = orgTextureLoader.load( 'https://threejs.org/examples/textures/terrain/grasslight-big.jpg' );
 				groundTexture.wrapS = groundTexture.wrapT = THREE.RepeatWrapping;
 				groundTexture.repeat.set( 25, 25 );
 				groundTexture.anisotropy = 16;

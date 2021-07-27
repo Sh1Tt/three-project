@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf8" />
-    <title>My Three.js Project v1.0</title>
-    <meta name="title" content="My Three.js Project v1.0">
-    <meta name="description" content="Trying to hack some different projects together, in order to create the desired scenery">
-    <!--<script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>--><!--<script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>-->
-  </head>
-  <body>
-    <script type="module">
-      import * as THREE from 'https://threejs.org/build/three.module.js';
+	<head>
+		<meta charset="utf8" />
+		<title>My Three.js Project v1.0</title>
+		<meta name="title" content="My Three.js Project v1.0">
+		<meta name="description" content="Trying to hack some different projects together, in order to create the desired scenery">
+		<!--<script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>--><!--<script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>-->
+	</head>
+	<body>
+		<script type="module">
+			import * as THREE from 'https://threejs.org/build/three.module.js';
+			import { OrbitControls } from 'https://threejs.org/examples/jsm/controls/OrbitControls.js';
 			import { OBJLoader } from 'https://threejs.org/examples/jsm/loaders/OBJLoader.js';
-      
-    </script>
-  </body>
+			
+			let scene, camera, renderer, object
+
+			let container
+
+			function init()
+			{
+				container = document.createElement( 'canvas' );
+				container.id = `three_js__out`;
+				document.body.appendChild( container );
+				
+			}
+			
+		</script>
+	</body>
 </html>

@@ -29,7 +29,8 @@
 			import { GUI } from 'https://threejs.org/examples/jsm/libs/dat.gui.module.js';
 
 			import { OrbitControls } from 'https://threejs.org/examples/jsm/controls/OrbitControls.js';
-
+			
+			const customTextureImage = 'http://cdn.mauricestolk.hns.to/tshirt_upsidedown.png';
 			/*
 			 * Cloth Simulation using a relaxed constraints solver
 			 */
@@ -455,7 +456,7 @@
 				// cloth material
 
 				const loader = new THREE.TextureLoader();
-				const clothTexture = loader.load( 'http://cdn.mauricestolk.hns.to/00000002_front.jpg' );
+				const clothTexture = loader.load( customTextureImage );
 				clothTexture.anisotropy = 16;
 
 				const clothMaterial = new THREE.MeshLambertMaterial( {

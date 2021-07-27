@@ -92,7 +92,7 @@
 
 					} );
 
-					object.position.y = - 45;
+					object.position.y = - 95;
 					scene.add( object );
 
 				}
@@ -180,8 +180,8 @@
 
 			function render() {
 
-				camera.position.x += ( mouseX - camera.position.x ) * .05;
-				camera.position.y += ( - mouseY - camera.position.y ) * .05;
+				camera.position.x += ( ( mouseX - camera.position.x ) * .05 ) + 10;
+				camera.position.y += ( ( - mouseY - camera.position.y ) * .05 ) + 10;
 
 				camera.lookAt( scene.position );
 

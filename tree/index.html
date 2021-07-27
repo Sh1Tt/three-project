@@ -5,10 +5,40 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="https://threejs.org/examples/main.css">
+		<style>
+			#progress_bar
+			{
+				position: relative;
+				left: 0;
+				width: 100vw;
+				top: 0;
+				height: 100vh;
+				z-index: -7264924345;
+				color: rgb( 255 255 255 / 0.01 );
+				background-color: rgb( 0 0 0 / 0.01 );
+				display: block;
+			}
+			p[data-progress]
+			{
+				position: fixed;
+				top: 80vw;
+				height: 2em;
+				left: 0;
+				width: 100%;
+				display: inline;
+				text-align: center;
+				color: rgb( 255 255 255 / 0.93 );
+				background-color: rgb( 0 0 0 / 0.0 );
+				z-index: 972975692854692765;
+			}
+		</style>
 	</head>
 
 	<body>
 		<div id="info">
+			<div id="progress_bar">
+				<p class="loader progress" data-progress="model"></p>
+			</div>
 		<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> - OBJLoader test
 		</div>
 
@@ -66,7 +96,7 @@
 				}
 
 				const manager = new THREE.LoadingManager( loadModel );
-
+				
 				manager.onProgress = function ( item, loaded, total ) {
 
 					console.log( item, loaded, total );
@@ -80,13 +110,15 @@
 
 				// model
 
+				const tracker = document.querySelector( `[data-progress="model"]` );
+				
 				function onProgress( xhr ) {
 
 					if ( xhr.lengthComputable ) {
 
 						const percentComplete = xhr.loaded / xhr.total * 100;
-						console.log( 'model ' + Math.round( percentComplete, 2 ) + '% downloaded' );
-
+						// console.log( 'model ' + Math.round( percentComplete, 2 ) + '% downloaded' );
+						tracker.innerText = `${Math.round( percentComplete, 2 )}% loaded..`;
 					}
 
 				}

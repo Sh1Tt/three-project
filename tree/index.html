@@ -152,7 +152,8 @@
 				// Load an image file into a custom material
 				const __material = new THREE.MeshLambertMaterial(
 				{
-				  	opacity: 1,
+				  	opacity: 0.5,
+					transparency: true,
 					map: textureLoader.load( 'http://cdn.mauricestolk.hns.to/model/Untitled.png' )
 				});
 

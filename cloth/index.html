@@ -47,6 +47,11 @@
 				}
 			];
 			
+			const treeModel = {
+				path: 'http://cdn.mauricestolk.hns.to/model/koenigii-tree/',
+				object: 'as12_8.obj',
+				material: 'as12_8.mtl
+			};
 			const koenigiiTree = 'http://cdn.mauricestolk.hns.to/model/koenigii-tree/as12_8.obj';
 // 			const treeTexture = 'http://cdn.mauricestolk.hns.to/model/tree-32/1236954294_31.jpg';	
 			
@@ -646,12 +651,14 @@
 				// #~
 
 				const mtlLoader = new MTLLoader( manager );
-				mtlLoader.load( 'http://cdn.mauricestolk.hns.to/model/koenigii-tree/as12_8.mtl', function( materials )
+				mtlLoader.setPath( treeModel.path );
+				mtlLoader.load( treeModel.material, function( materials )
 				{
 					materials.preload();
 					const objLoader = new OBJLoader( manager );
+					objLoader.setPath( treeModel.path );
 					objLoader.setMaterials( materials );
-  					objLoader.load( koenigiiTree, function ( obj )
+  					objLoader.load( treeModel.object, function ( obj )
 					{
 						object = obj;
 					},

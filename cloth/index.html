@@ -299,6 +299,22 @@
 						}
 
 					}
+					let __i;
+					const __indices = anotherGeometry.index;
+					const normals = anotherGeometry.attributes.normal;
+
+					for ( let i = 0, il = __indices.count; i < il; i += 3 ) {
+
+						for ( let j = 0; j < 3; j ++ ) {
+
+							__i = __indices.getX( i + j );
+							normal.fromBufferAttribute( normals, __i );
+							tmpForce.copy( normal ).normalize().multiplyScalar( normal.dot( windForce ) );
+							particles[ __i ].addForce( tmpForce );
+
+						}
+
+					}
 
 				}
 
@@ -414,7 +430,7 @@
 			let container, stats;
 			let camera, scene, renderer;
 
-			let clothGeometry;
+			let clothGeometry, anotherGeometry;
 			let shirt, sphere;
 			let object, __obj;
 
@@ -561,7 +577,7 @@
 				// cloth geometry
 
 				clothGeometry = new THREE.ParametricBufferGeometry( clothFunction, cloth.w, cloth.h );
-
+				anotherGeometry = new THREE.ParametricBufferGeometry( clothFunction, cloth.w, cloth.h );
 				// cloth mesh
 
 				shirt = new THREE.Mesh( clothGeometry, clothMaterial );
@@ -578,7 +594,7 @@
 				
 				// second cloth mesh
 
-				object = new THREE.Mesh( clothGeometry, clothMaterial );
+				object = new THREE.Mesh( anotherGeometry, clothMaterial );
 				object.position.set( 325, 275, -105 );
 				object.castShadow = true;
 				scene.add( object );

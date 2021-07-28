@@ -152,8 +152,6 @@
 				// Load an image file into a custom material
 				const __material = new THREE.MeshLambertMaterial(
 				{
-				  	opacity: 0.5,
-					transparency: true,
 					map: textureLoader.load( 'http://cdn.mauricestolk.hns.to/model/Untitled.png' )
 				});
 
@@ -162,7 +160,12 @@
 				const __geometry = new THREE.PlaneGeometry( 74, 128 );
 
 				// combine our image geometry and material into a mesh
-				const __Msh = new THREE.Mesh( __geometry, __material );
+				const __Msh = new THREE.Mesh( __geometry,
+				{ 
+					__material,
+				  	opacity: 0.5,
+					transparency: true	
+				);
 
 				// set the position of the image mesh in the x,y,z dimensions
 				__Msh.position.set( -35, -25.75, 15 )

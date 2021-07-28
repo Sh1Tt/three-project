@@ -311,7 +311,7 @@
 							_indx = _indices.getX( _i + _j );
 							_normal.fromBufferAttribute( _normals, _indx );
 							tmpForce.copy( _normal ).normalize().multiplyScalar( _normal.dot( windForce ) );
-							_particles[ indx ].addForce( tmpForce );
+							_particles[ _indx ].addForce( tmpForce );
 						}
 					}
 				}

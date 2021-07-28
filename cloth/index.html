@@ -277,45 +277,26 @@
 				windForce.multiplyScalar( windStrength );
 
 				// Aerodynamics forces
-
+				
 				const particles = cloth.particles;
-
-				if ( params.enableWind ) {
-
+				
+				if ( params.enableWind )
+				{
 					let indx;
 					const normal = new THREE.Vector3();
 					const indices = clothGeometry.index;
 					const normals = clothGeometry.attributes.normal;
-
-					for ( let i = 0, il = indices.count; i < il; i += 3 ) {
-
-						for ( let j = 0; j < 3; j ++ ) {
-
+					//
+					for ( let i = 0, il = indices.count; i < il; i += 3 )
+					{
+						for ( let j = 0; j < 3; j ++ )
+						{
 							indx = indices.getX( i + j );
 							normal.fromBufferAttribute( normals, indx );
 							tmpForce.copy( normal ).normalize().multiplyScalar( normal.dot( windForce ) );
 							particles[ indx ].addForce( tmpForce );
-
 						}
-
 					}
-					let __i;
-					const __indices = anotherGeometry.index;
-					const __normals = anotherGeometry.attributes.normal;
-
-					for ( let i = 0, il = __indices.count; i < il; i += 3 ) {
-
-						for ( let j = 0; j < 3; j ++ ) {
-
-							__i = __indices.getX( i + j );
-							normal.fromBufferAttribute( __normals, __i );
-							tmpForce.copy( normal ).normalize().multiplyScalar( normal.dot( windForce ) );
-							particles[ __i ].addForce( tmpForce + 0.3 );
-
-						}
-
-					}
-
 				}
 
 				for ( let i = 0, il = particles.length; i < il; i ++ ) {
@@ -740,12 +721,16 @@
 					const v = p[ i ].position;
 
 					clothGeometry.attributes.position.setXYZ( i, v.x, v.y, v.z );
+					anotherGeometry.attributes.position.setXYZ( i, v.x, v.y, v.z );
 
 				}
 
 				clothGeometry.attributes.position.needsUpdate = true;
+				anotherGeometry.attributes.position.needsUpdate = true;
 
+				
 				clothGeometry.computeVertexNormals();
+				anotherGeometry.computeVertexNormals();
 
 				sphere.position.copy( ballPosition );
 

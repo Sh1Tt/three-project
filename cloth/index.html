@@ -284,6 +284,7 @@
 				if ( params.enableWind )
 				{
 					let indx;
+					let _indx;
 					const normal = new THREE.Vector3();
 					const _normal = new THREE.Vector3();
 					
@@ -303,14 +304,14 @@
 						}
 					}
 					//
-					for ( let i = 0, il = _indices.count; i < il; i += 3 )
+					for ( let _i = 0, _il = _indices.count; _i < _il; _i += 3 )
 					{
-						for ( let j = 0; j < 3; j ++ )
+						for ( let _j = 0; _j < 3; _j ++ )
 						{
-							indx = _indices.getX( i + j );
-							_normal.fromBufferAttribute( _normals, indx );
+							_indx = _indices.getX( _i + _j );
+							_normal.fromBufferAttribute( _normals, _indx );
 							tmpForce.copy( _normal ).normalize().multiplyScalar( _normal.dot( windForce ) );
-							particles[ indx ].addForce( tmpForce );
+							_particles[ indx ].addForce( tmpForce );
 						}
 					}
 				}
@@ -420,15 +421,13 @@
 
 				}
 				
-				for ( let i = 0, _il = _pins.length; i < _il; i ++ ) {
-
+				for ( let i = 0, _il = _pins.length; i < _il; i ++ )
+				{
 					const _xy = _pins[ i ];
-					const _p = particles[ _xy ];
+					const _p = _particles[ _xy ];
 					_p.position.copy( _p.original );
 					_p.previous.copy( _p.original );
-
 				}
-
 
 			}
 
@@ -478,8 +477,7 @@
 			let camera, scene, renderer;
 
 			let clothGeometry, anotherGeometry;
-			let shirt, sphere;
-			let object, __obj;
+			let object, shirt, sphere;
 
 			init();
 			animate( 0 );

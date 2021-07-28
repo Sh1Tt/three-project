@@ -186,8 +186,13 @@
 					map: textureLoader.load( images[1].url )
 				});
 				__mesh = new THREE.Mesh( __geometry, __material );
-				__geometry = new THREE.PlaneGeometry( 74*.7, 120*.7 );
-				__mesh.position.set( 35, -28, 12.5 )
+				let downScale =
+				{
+					x: 74 * 0.6, 
+					y: 120 * 0.6
+				};
+				__geometry = new THREE.PlaneGeometry( downScale.x, downScale.y );
+				__mesh.position.set( 35, -28, 13.75 )
 				scene.add( __mesh );
 				
 				//

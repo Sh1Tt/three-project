@@ -74,7 +74,7 @@
 			const TIMESTEP = 18 / 1000;
 			const TIMESTEP_SQ = TIMESTEP * TIMESTEP;
 
-			let pins = [];
+			let pins = [], _pins = [];
 
 			const windForce = new THREE.Vector3( 0, 0, 0 );
 
@@ -323,9 +323,9 @@
 					particle.integrate( TIMESTEP_SQ );
 
 				}
-				for ( let i = 0, il = _particles.length; i < il; i ++ ) {
+				for ( let _i = 0, _il = _particles.length; _i < _il; _i ++ ) {
 
-					const _particle = _particles[ i ];
+					const _particle = _particles[ _i ];
 					_particle.addForce( gravity );
 
 					_particle.integrate( TIMESTEP_SQ );
@@ -345,9 +345,9 @@
 					satisfyConstraints( constraint[ 0 ], constraint[ 1 ], constraint[ 2 ] );
 
 				}
-				for ( let i = 0; i < _il; i ++ ) {
+				for ( let _i = 0; _i < _il; _i ++ ) {
 
-					const _constraint = _constraints[ i ];
+					const _constraint = _constraints[ _i ];
 					satisfyConstraints( _constraint[ 0 ], _constraint[ 1 ], _constraint[ 2 ] );
 
 				}
@@ -397,9 +397,9 @@
 
 				}
 				
-				for ( let i = 0, _il = _particles.length; i < _il; i ++ ) {
+				for ( let _i = 0, _il = _particles.length; _i < _il; _i ++ ) {
 
-					const _particle = _particles[ i ];
+					const _particle = _particles[ _i ];
 					const _pos = _particle.position;
 					if ( _pos.y < - 250 ) {
 
@@ -419,9 +419,10 @@
 					p.previous.copy( p.original );
 
 				}
-				for ( let i = 0, _il = pins.length; i < _il; i ++ ) {
+				
+				for ( let i = 0, _il = _pins.length; i < _il; i ++ ) {
 
-					const _xy = pins[ i ];
+					const _xy = _pins[ i ];
 					const _p = particles[ _xy ];
 					_p.position.copy( _p.original );
 					_p.previous.copy( _p.original );
@@ -437,28 +438,40 @@
 			const anotherCloth = new Cloth( xSegs , ySegs );
 
 			const pinsFormation = [];
+			const _pinsFormation = [];
 			pins = [ 6 ];
-
+			_pins = [ 6 ];
+			
 			pinsFormation.push( pins );
+			_pinsFormation.push( _pins );
 
 			pins = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
+			_pins = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
 			pinsFormation.push( pins );
+			_pinsFormation.push( _pins );
 
 			pins = [ 0 ];
+			_pins = [ 0 ];
 			pinsFormation.push( pins );
+			_pinsFormation.push( _pins );
 
 			pins = []; // cut the rope ;)
+			_pins = []; // cut the rope ;)
 			pinsFormation.push( pins );
+			_pinsFormation.push( _pins );
 
 			pins = [ 0, cloth.w ]; // classic 2 pins
+			_pins = [ 0, anotherCloth.w ]; // classic 2 pins
 			pinsFormation.push( pins );
+			_pinsFormation.push( _pins );
 
 			pins = pinsFormation[ 1 ];
+			_pins = pinsFormation[ 1 ];
 
-			function togglePins() {
-
+			function togglePins()
+			{
 				pins = pinsFormation[ ~ ~ ( Math.random() * pinsFormation.length ) ];
-
+				_pins = pinsFormation[ ~ ~ ( Math.random() * _pinsFormation.length ) ];
 			}
 
 			let container, stats;

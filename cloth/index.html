@@ -575,6 +575,19 @@
 					map: clothTexture,
 					alphaTest: 0.5
 				} );
+				
+				// second cloth mesh
+
+				object = new THREE.Mesh( clothGeometry, clothMaterial );
+				object.position.set( 325, 275, -105 );
+				object.castShadow = true;
+				scene.add( object );
+
+				object.customDepthMaterial = new THREE.MeshDepthMaterial( {
+					depthPacking: THREE.RGBADepthPacking,
+					map: clothTexture,
+					alphaTest: 0.5
+				} );
 
 				// sphere
 

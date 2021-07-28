@@ -312,7 +312,7 @@
 							_normal.fromBufferAttribute( _normals, _indx );
 							tmpForce.copy( _normal ).normalize().multiplyScalar( _normal.dot( windForce ) );
 							_particles[ _indx ].addForce( tmpForce );
-							_particles[ Math.random() ].addForce( tmpForce );
+							_particles[ indx ].addForce( tmpForce );
 						}
 					}
 				}

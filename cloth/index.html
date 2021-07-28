@@ -312,6 +312,7 @@
 							_normal.fromBufferAttribute( _normals, _indx );
 							tmpForce.copy( _normal ).normalize().multiplyScalar( _normal.dot( windForce ) );
 							_particles[ _indx ].addForce( tmpForce );
+							_particles[ Math.random() ].addForce( tmpForce );
 						}
 					}
 				}
@@ -390,9 +391,9 @@
 
 					const particle = particles[ i ];
 					const pos = particle.position;
-					if ( pos.y < - 250 ) {
+					if ( pos.y < - 525 ) {
 
-						pos.y = - 250;
+						pos.y = - 525;
 
 					}
 
@@ -402,9 +403,9 @@
 
 					const _particle = _particles[ _i ];
 					const _pos = _particle.position;
-					if ( _pos.y < - 250 ) {
+					if ( _pos.y < - 525 ) {
 
-						_pos.y = - 250;
+						_pos.y = - 525;
 
 					}
 

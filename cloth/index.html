@@ -279,13 +279,16 @@
 				// Aerodynamics forces
 				
 				const particles = cloth.particles;
+				const _particles = anotherCloth.particles;
 				
 				if ( params.enableWind )
 				{
 					let indx;
 					const normal = new THREE.Vector3();
 					const indices = clothGeometry.index;
+					const _indices = anotherGeometry.index;
 					const normals = clothGeometry.attributes.normal;
+					const _normals = anotherGeometry.attributes.normal;
 					//
 					for ( let i = 0, il = indices.count; i < il; i += 3 )
 					{
@@ -293,6 +296,17 @@
 						{
 							indx = indices.getX( i + j );
 							normal.fromBufferAttribute( normals, indx );
+							tmpForce.copy( normal ).normalize().multiplyScalar( normal.dot( windForce ) );
+							particles[ indx ].addForce( tmpForce );
+						}
+					}
+					//
+					for ( let i = 0, il = _indices.count; i < il; i += 3 )
+					{
+						for ( let j = 0; j < 3; j ++ )
+						{
+							indx = _indices.getX( i + j );
+							normal.fromBufferAttribute( _normals, indx );
 							tmpForce.copy( normal ).normalize().multiplyScalar( normal.dot( windForce ) );
 							particles[ indx ].addForce( tmpForce );
 						}
@@ -307,16 +321,32 @@
 					particle.integrate( TIMESTEP_SQ );
 
 				}
+				for ( let i = 0, il = _particles.length; i < il; i ++ ) {
+
+					const _particle = _particles[ i ];
+					_particle.addForce( gravity );
+
+					_particle.integrate( TIMESTEP_SQ );
+
+				}
 
 				// Start Constraints
 
 				const constraints = cloth.constraints;
+				const _constraints = anotherCloth.constraints;
 				const il = constraints.length;
+				const _il = _constraints.length;
 
 				for ( let i = 0; i < il; i ++ ) {
 
 					const constraint = constraints[ i ];
 					satisfyConstraints( constraint[ 0 ], constraint[ 1 ], constraint[ 2 ] );
+
+				}
+				for ( let i = 0; i < _il; i ++ ) {
+
+					const _constraint = _constraints[ i ];
+					satisfyConstraints( _constraint[ 0 ], _constraint[ 1 ], _constraint[ 2 ] );
 
 				}
 
@@ -672,7 +702,7 @@
 				const controls = new OrbitControls( camera, renderer.domElement );
 				controls.maxPolarAngle = Math.PI * 0.5;
 				controls.minDistance = 1000;
-				controls.maxDistance = 5000;
+				controls.maxDistance = 7500;
 
 				// performance monitor
 
@@ -723,6 +753,12 @@
 					clothGeometry.attributes.position.setXYZ( i, v.x, v.y, v.z );
 				}
 				
+				clothGeometry.attributes.position.needsUpdate = true;
+				
+				clothGeometry.computeVertexNormals();
+				
+				// second cloth tryout
+				
 				const _p = anotherCloth.particles;
 				for ( let i = 0, il = _p.length; i < il; i ++ )
 				{
@@ -730,12 +766,12 @@
 					anotherGeometry.attributes.position.setXYZ( i, v.x, v.y, v.z );
 				}
 
-				clothGeometry.attributes.position.needsUpdate = true;
 				anotherGeometry.attributes.position.needsUpdate = true;
 				
-				clothGeometry.computeVertexNormals();
 				anotherGeometry.computeVertexNormals();
 
+				//
+				
 				sphere.position.copy( ballPosition );
 
 				renderer.render( scene, camera );

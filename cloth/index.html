@@ -301,16 +301,16 @@
 					}
 					let __i;
 					const __indices = anotherGeometry.index;
-					const normals = anotherGeometry.attributes.normal;
+					const __normals = anotherGeometry.attributes.normal;
 
 					for ( let i = 0, il = __indices.count; i < il; i += 3 ) {
 
 						for ( let j = 0; j < 3; j ++ ) {
 
 							__i = __indices.getX( i + j );
-							normal.fromBufferAttribute( normals, __i );
+							normal.fromBufferAttribute( __normals, __i );
 							tmpForce.copy( normal ).normalize().multiplyScalar( normal.dot( windForce ) );
-							particles[ __i ].addForce( tmpForce );
+							particles[ __i ].addForce( tmpForce + 0.3 );
 
 						}
 

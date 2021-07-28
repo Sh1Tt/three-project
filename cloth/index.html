@@ -30,12 +30,10 @@
 
 			import { OrbitControls } from 'https://threejs.org/examples/jsm/controls/OrbitControls.js';
 
-			import { MTLLoader } from 'https://threejs.org/examples/jsm/loaders/MTLLoader.js';
 			import { OBJLoader } from 'https://threejs.org/examples/jsm/loaders/OBJLoader.js';
-			
-			
+			import { MTLLoader } from 'https://threejs.org/examples/jsm/loaders/MTLLoader.js';
+						
 			// -- custom deps.
-			const customTextureImage = 'http://cdn.mauricestolk.hns.to/shirt_upsidedown.jpg';
 			const product =
 			[
 				{
@@ -50,7 +48,7 @@
 			];
 			
 			const koenigiiTree = 'http://cdn.mauricestolk.hns.to/model/koenigii-tree/as12_8.obj';
-			const treeTexture = 'http://cdn.mauricestolk.hns.to/model/tree-32/1236954294_31.jpg';	
+// 			const treeTexture = 'http://cdn.mauricestolk.hns.to/model/tree-32/1236954294_31.jpg';	
 			
 			/*
 			 * Cloth Simulation using a relaxed constraints solver
@@ -647,7 +645,7 @@
 
 				// #~
 
-				const mtlLoader = new THREE.MTLLoader( manager );
+				const mtlLoader = new MTLLoader( manager );
 				mtlLoader.load( 'http://cdn.mauricestolk.hns.to/model/koenigii-tree/as12_8.mtl', function( materials )
 				{
 					materials.preload();

@@ -96,7 +96,7 @@
 			const tmpForce = new THREE.Vector3();
 			const diff = new THREE.Vector3();
 			
-			let koenigiiConstructor =
+			let tree =
 			{
 				x: - 375,
 				y: - 250,
@@ -576,22 +576,17 @@
 						if ( child.isMesh ) child.material.map = texture;
 
 					} );
-					object.position.x = koenigiiConstructor.x; // - 375;
-					object.position.y = koenigiiConstructor.y; //- 250;
-					object.position.z = koenigiiConstructor.z; //- 190;
-					object.scale.set( koenigiiConstructor.scale, koenigiiConstructor.scale, koenigiiConstructor.scale );//_s, _s, _s );
+					object.position.x = tree.x; // - 375;
+					object.position.y = tree.y; // - 250;
+					object.position.z = tree.z; // - 190;
+					object.scale.set( tree.scale, tree.scale, tree.scale ); // _s, _s, _s );
 					object.receiveShadow = true;
 					object.castShadow = true;
 // 					object.matrixAutoUpdate = true;
 // 					object.updateMatrix();
 					scene.add( object );
 					shirt.visible = true;
-					babyShirt.visible = true;
-					
-					object.position.x = koenigiiConstructor.x + 600; // - 375;
-					object.scale.set( koenigiiConstructor.scale - 25, koenigiiConstructor.scale - 25, koenigiiConstructor.scale - 25 );
-					scene.add( object );
-					
+					babyShirt.visible = true;					
 				}
 
 				// manager

@@ -312,7 +312,7 @@
 							_normal.fromBufferAttribute( _normals, _indx );
 							tmpForce.copy( _normal ).normalize().multiplyScalar( _normal.dot( windForce ) );
 							_particles[ _indx ].addForce( tmpForce );
-							let _rnd = Math.floor( Math.random() * _indices.length );
+							let _rnd = Math.floor( Math.random() * _il );
 							console.log( _rnd );
 							_particles[ _rnd ].addForce( tmpForce );
 						}

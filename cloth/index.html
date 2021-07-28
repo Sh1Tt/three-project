@@ -35,6 +35,19 @@
 			
 			// -- custom deps.
 			const customTextureImage = 'http://cdn.mauricestolk.hns.to/shirt_upsidedown.jpg';
+			const product =
+			[
+				{
+					url: 'http://cdn.mauricestolk.hns.to/shirt_upsidedown.jpg'
+				},
+				{
+					url: 'http://cdn.mauricestolk.hns.to/baby_upsidedown.jpg'
+				},
+				{
+					url: 'http://cdn.mauricestolk.hns.to/umitea_upsidedown.jpg'
+				}
+			};
+			const customTextureImage = 'http://cdn.mauricestolk.hns.to/shirt_upsidedown.jpg';
 			
 			const koenigiiTree = 'http://cdn.mauricestolk.hns.to/model/koenigii-tree/as12_8.obj';
 			const treeTexture = 'http://cdn.mauricestolk.hns.to/model/tree-32/1236954294_31.jpg';	
@@ -613,7 +626,7 @@
 				// cloth material
 
 				// const textureLoader = new THREE.TextureLoader();
-				const clothTexture = textureLoader.load( customTextureImage );
+				const clothTexture = textureLoader.load( product[0].url );
 				clothTexture.anisotropy = 16;
 
 				const clothMaterial = new THREE.MeshLambertMaterial( {
@@ -621,11 +634,20 @@
 					side: THREE.DoubleSide,
 					alphaTest: 0.5
 				} );
+				
+				const anotherClothTexture = textureLoader.load( product[1].url );
+				anotherClothTexture.anisotropy = 16;
+
+				const anotherClothMaterial = new THREE.MeshLambertMaterial( {
+					map: anotherClothTexture,
+					side: THREE.DoubleSide,
+					alphaTest: 0.5
+				} );
 
 				// cloth geometry
 
 				clothGeometry = new THREE.ParametricBufferGeometry( clothFunction, cloth.w, cloth.h );
-				anotherGeometry = new THREE.ParametricBufferGeometry( clothFunction, cloth.w, cloth.h );
+				anotherGeometry = new THREE.ParametricBufferGeometry( clothFunction, ( cloth.w * .7 ) , ( cloth.h * .7 ) );
 				
 				// cloth mesh
 
@@ -643,14 +665,15 @@
 				
 				// second cloth mesh
 
-				object = new THREE.Mesh( anotherGeometry, clothMaterial );
-				object.position.set( 250, 275, -105 );
-				object.castShadow = true;
-				scene.add( object );
+				babyShirt = new THREE.Mesh( anotherGeometry, anotherClothMaterial );
+				babyShirt.position.set( 225, 225, -105 );
+				babyShirt.castShadow = true;
+				babyShirt.visible = false;
+				scene.add( babyShirt );
 
-				object.customDepthMaterial = new THREE.MeshDepthMaterial( {
+				babyShirt.customDepthMaterial = new THREE.MeshDepthMaterial( {
 					depthPacking: THREE.RGBADepthPacking,
-					map: clothTexture,
+					map: anotherClothTexture,
 					alphaTest: 0.5
 				} );
 

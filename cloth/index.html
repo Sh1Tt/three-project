@@ -595,12 +595,12 @@
 
 
 				function loadModel() {
-					//const _s = 225;
-					object.traverse( function ( child ) {
+// 					//const _s = 225;
+// 					object.traverse( function ( child ) {
 
-						if ( child.isMesh ) child.material.map = texture;
+// 						if ( child.isMesh ) child.material.map = texture;
 
-					} );
+// 					} );
 					object.position.x = tree.x; // - 375;
 					object.position.y = tree.y; // - 250;
 					object.position.z = tree.z; // - 190;
@@ -626,9 +626,9 @@
 				
 				// texture
 
-				const textureLoader = new THREE.TextureLoader( manager );
+// 				const textureLoader = new THREE.TextureLoader( manager );
 				
-				const texture = textureLoader.load( treeTexture );
+// 				const texture = textureLoader.load( treeTexture );
 
 				// model
 
@@ -647,7 +647,7 @@
 
 				// #~
 
-				const mtlLoader = new THREE.MTLLoader();
+				const mtlLoader = new THREE.MTLLoader( manager );
 				mtlLoader.load( 'http://cdn.mauricestolk.hns.to/model/koenigii-tree/as12_8.mtl', function( materials )
 				{
 					materials.preload();

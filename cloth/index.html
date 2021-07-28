@@ -30,6 +30,8 @@
 
 			import { OrbitControls } from 'https://threejs.org/examples/jsm/controls/OrbitControls.js';
 
+			import { Sky } from 'https://threejs.org/examples/jsm/objects/Sky.js';
+			
 			import { OBJLoader } from 'https://threejs.org/examples/jsm/loaders/OBJLoader.js';
 			import { MTLLoader } from 'https://threejs.org/examples/jsm/loaders/MTLLoader.js';
 						
@@ -99,6 +101,9 @@
 
 			const tmpForce = new THREE.Vector3();
 			const diff = new THREE.Vector3();
+			
+			
+			
 			
 			let tree =
 			{
@@ -527,7 +532,7 @@
 
 				// lights
 
-				scene.add( new THREE.AmbientLight( 0x666666 ) );
+// 				scene.add( new THREE.AmbientLight( 0x666666 ) );
 
 				const light = new THREE.DirectionalLight( 0xdfebff, 1 );
 				light.position.set( 50, 200, 100 );
@@ -547,7 +552,51 @@
 
 				light.shadow.camera.far = 1000;
 
-				scene.add( light );
+// 				scene.add( light );
+				
+				//
+				
+				// Sun
+				
+				let sun = new THREE.Vector3(); 
+				
+				// Skybox
+
+				const sky = new Sky();
+				sky.scale.setScalar( 10000 );
+				scene.add( sky );
+
+				const skyUniforms = sky.material.uniforms;
+
+				skyUniforms[ 'turbidity' ].value = 10;
+				skyUniforms[ 'rayleigh' ].value = 2;
+				skyUniforms[ 'mieCoefficient' ].value = 0.005;
+				skyUniforms[ 'mieDirectionalG' ].value = 0.8;
+
+				const parameters = {
+					elevation: 2,
+					azimuth: 180
+				};
+
+				const pmremGenerator = new THREE.PMREMGenerator( renderer );
+
+				function updateSun() {
+
+					const phi = THREE.MathUtils.degToRad( 90 - parameters.elevation );
+					const theta = THREE.MathUtils.degToRad( parameters.azimuth );
+
+					sun.setFromSphericalCoords( 1, phi, theta );
+
+					sky.material.uniforms[ 'sunPosition' ].value.copy( sun );
+					water.material.uniforms[ 'sunDirection' ].value.copy( sun ).normalize();
+
+					scene.environment = pmremGenerator.fromScene( sky ).texture;
+
+				}
+
+				updateSun();
+
+				//
 				
 				const purpleLight = new THREE.SpotLight( 0x800080 );
 				purpleLight.position.set( 25, -250, 75 );
@@ -797,6 +846,8 @@
 
 				container.appendChild( renderer.domElement );
 
+				renderer.toneMapping = THREE.ACESFilmicToneMapping;
+				
 				renderer.outputEncoding = THREE.sRGBEncoding;
 
 				renderer.shadowMap.enabled = true;

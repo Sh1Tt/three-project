@@ -285,6 +285,8 @@
 				{
 					let indx;
 					const normal = new THREE.Vector3();
+					const _normal = new THREE.Vector3();
+					
 					const indices = clothGeometry.index;
 					const _indices = anotherGeometry.index;
 					const normals = clothGeometry.attributes.normal;
@@ -306,8 +308,8 @@
 						for ( let j = 0; j < 3; j ++ )
 						{
 							indx = _indices.getX( i + j );
-							normal.fromBufferAttribute( _normals, indx );
-							tmpForce.copy( normal ).normalize().multiplyScalar( normal.dot( windForce ) );
+							_normal.fromBufferAttribute( _normals, indx );
+							tmpForce.copy( _normal ).normalize().multiplyScalar( _normal.dot( windForce ) );
 							particles[ indx ].addForce( tmpForce );
 						}
 					}
@@ -394,6 +396,18 @@
 					}
 
 				}
+				
+				for ( let i = 0, _il = _particles.length; i < _il; i ++ ) {
+
+					const _particle = _particles[ i ];
+					const _pos = _particle.position;
+					if ( _pos.y < - 250 ) {
+
+						_pos.y = - 250;
+
+					}
+
+				}
 
 				// Pin Constraints
 
@@ -403,6 +417,14 @@
 					const p = particles[ xy ];
 					p.position.copy( p.original );
 					p.previous.copy( p.original );
+
+				}
+				for ( let i = 0, _il = pins.length; i < _il; i ++ ) {
+
+					const _xy = pins[ i ];
+					const _p = particles[ _xy ];
+					_p.position.copy( _p.original );
+					_p.previous.copy( _p.original );
 
 				}
 

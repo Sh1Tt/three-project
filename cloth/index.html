@@ -527,11 +527,11 @@
 
 				// lights
 
-				scene.add( new THREE.AmbientLight( 0x666666 ) );
+				//scene.add( new THREE.AmbientLight( 0x666666 ) );
 
 				const light = new THREE.DirectionalLight( 0xdfebff, 1 );
 				light.position.set( 50, 200, 100 );
-				light.position.multiplyScalar( .13 );
+				light.position.multiplyScalar( 1.3 );
 
 				light.castShadow = true;
 
@@ -710,7 +710,7 @@
 				// second cloth mesh
 
 				babyShirt = new THREE.Mesh( anotherGeometry, anotherClothMaterial );
-				babyShirt.position.set( 225, 225, -105 );
+				babyShirt.position.set( 225, 200, -155 );
 				babyShirt.castShadow = true;
 				babyShirt.visible = false;
 				scene.add( babyShirt );

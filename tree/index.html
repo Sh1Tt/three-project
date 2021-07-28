@@ -185,16 +185,11 @@
 					transparent: true,
 					map: textureLoader.load( images[1].url )
 				});
-
-				
-				// combine our image geometry and material into a mesh
 				__mesh = new THREE.Mesh( __geometry, __material );
-
-				// set the position of the image mesh in the x,y,z dimensions
-				__mesh.position.set( 35, -25.75, 12.5 )
-
-				// add the image to the scene
+				__geometry = new THREE.PlaneGeometry( 66, 114 );
+				__mesh.position.set( 35, -27, 12.5 )
 				scene.add( __mesh );
+				
 				//
 				
 				

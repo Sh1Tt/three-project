@@ -382,6 +382,7 @@
 			/* testing cloth simulation */
 
 			const cloth = new Cloth( xSegs, ySegs );
+			const anotherCloth = new Cloth( xSegs * .93 , ySegs * 1.06 );
 
 			const pinsFormation = [];
 			pins = [ 6 ];
@@ -559,6 +560,7 @@
 
 				clothGeometry = new THREE.ParametricBufferGeometry( clothFunction, cloth.w, cloth.h );
 				anotherGeometry = new THREE.ParametricBufferGeometry( clothFunction, cloth.w, cloth.h );
+				
 				// cloth mesh
 
 				shirt = new THREE.Mesh( clothGeometry, clothMaterial );
@@ -576,7 +578,7 @@
 				// second cloth mesh
 
 				object = new THREE.Mesh( anotherGeometry, clothMaterial );
-				object.position.set( 325, 275, -105 );
+				object.position.set( 250, 275, -105 );
 				object.castShadow = true;
 				scene.add( object );
 
@@ -712,22 +714,24 @@
 
 			}
 
-			function render() {
-
-				const p = cloth.particles;
-
-				for ( let i = 0, il = p.length; i < il; i ++ ) {
-
+			function render()
+			{
+				const p = cloth.particles
+				for ( let i = 0, il = p.length; i < il; i ++ )
+				{
 					const v = p[ i ].position;
-
 					clothGeometry.attributes.position.setXYZ( i, v.x, v.y, v.z );
+				}
+				
+				const _p = anotherCloth.particles;
+				for ( let i = 0, il = _p.length; i < il; i ++ )
+				{
+					const v = _p[ i ].position;
 					anotherGeometry.attributes.position.setXYZ( i, v.x, v.y, v.z );
-
 				}
 
 				clothGeometry.attributes.position.needsUpdate = true;
 				anotherGeometry.attributes.position.needsUpdate = true;
-
 				
 				clothGeometry.computeVertexNormals();
 				anotherGeometry.computeVertexNormals();

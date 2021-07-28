@@ -507,7 +507,8 @@
 
 			let container, stats;
 			let camera, scene, renderer;
-
+			let sun
+			
 			let clothGeometry, anotherGeometry;
 			let object, shirt, babyShirt, sphere;
 
@@ -517,8 +518,21 @@
 			function init() {
 
 				container = document.createElement( 'div' );
+				container.id = '__three'
 				document.body.appendChild( container );
+				
+				// renderer
 
+				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.toneMapping = THREE.ACESFilmicToneMapping;
+				renderer.outputEncoding = THREE.sRGBEncoding;
+				renderer.shadowMap.enabled = true;
+				
+				container.appendChild( renderer.domElement );
+
+				
 				// scene
 
 				scene = new THREE.Scene();
@@ -556,9 +570,7 @@
 				
 				//
 				
-				// Sun
-				
-				let sun = new THREE.Vector3(); 
+				sun = new THREE.Vector3(); 
 				
 				// Skybox
 
@@ -838,20 +850,8 @@
 				mesh.castShadow = true;
 				// scene.add( mesh );
 
-				// renderer
-
-				renderer = new THREE.WebGLRenderer( { antialias: true } );
-				renderer.setPixelRatio( window.devicePixelRatio );
-				renderer.setSize( window.innerWidth, window.innerHeight );
-
-				container.appendChild( renderer.domElement );
-
-				renderer.toneMapping = THREE.ACESFilmicToneMapping;
+				// ~depricated renderer space
 				
-				renderer.outputEncoding = THREE.sRGBEncoding;
-
-				renderer.shadowMap.enabled = true;
-
 				// controls
 				const controls = new OrbitControls( camera, renderer.domElement );
 				controls.maxPolarAngle = Math.PI * 0.5;

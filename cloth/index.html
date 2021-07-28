@@ -95,6 +95,14 @@
 
 			const tmpForce = new THREE.Vector3();
 			const diff = new THREE.Vector3();
+			
+			let koenigiiConstructor =
+			{
+				x: - 375,
+				y: - 250,
+				z: - 190,
+				scale: 225
+			};
 
 			class Particle {
 
@@ -562,22 +570,27 @@
 				// _?
 
 				function loadModel() {
-					const _s = 225;
+					//const _s = 225;
 					object.traverse( function ( child ) {
 
 						if ( child.isMesh ) child.material.map = texture;
 
 					} );
-					object.position.x = - 375;
-					object.position.y = - 250;
-					object.position.z = - 190;
-					object.scale.set( _s, _s, _s );
+					object.position.x = koenigiiConstructor.x; // - 375;
+					object.position.y = koenigiiConstructor.y; //- 250;
+					object.position.z = koenigiiConstructor.z; //- 190;
+					object.scale.set( koenigiiConstructor.scale, koenigiiConstructor.scale, koenigiiConstructor.scale );//_s, _s, _s );
 					object.receiveShadow = true;
 					object.castShadow = true;
 // 					object.matrixAutoUpdate = true;
 // 					object.updateMatrix();
 					scene.add( object );
 					shirt.visible = true;
+					babyShirt.visible = true;
+					
+					object.position.x = koenigiiConstructor.x + 600; // - 375;
+					object.scale.set( koenigiiConstructor.scale - 25, koenigiiConstructor.scale - 25, koenigiiConstructor.scale - 25 );
+					scene.add( object );
 					
 				}
 

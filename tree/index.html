@@ -47,7 +47,11 @@
 			import * as THREE from 'https://threejs.org/build/three.module.js';
 
 			import { OBJLoader } from 'https://threejs.org/examples/jsm/loaders/OBJLoader.js';
-
+			
+			const images = [
+				{ url: 'http://cdn.mauricestolk.hns.to/model/Untitled.png', description: 'First flesh mesh', alt: 'Tribal girl with bow' },
+				{ url: 'http://cdn.mauricestolk.hns.to/model/Untitled2.png', description: 'Second flesh mesh', alt: 'Blonde teens' }	
+			];
 			let container;
 
 			let camera, scene, renderer;
@@ -154,7 +158,7 @@
 				{
 					opacity: 0.5,
 					transparent: true,
-					map: textureLoader.load( 'http://cdn.mauricestolk.hns.to/model/Untitled.png' )
+					map: textureLoader.load( images[1].url )
 				});
 
 				// create a plane geometry for the image with a width of 10

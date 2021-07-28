@@ -492,15 +492,17 @@
 						if ( child.isMesh ) child.material.map = texture;
 
 					} );
-					object.position.x = - 125;
+					object.position.x = - 375;
 					object.position.y = - 250;
-					object.position.z = - 10;
+					object.position.z = - 190;
 					object.scale.set( _s, _s, _s );
 					object.receiveShadow = true;
 					object.castShadow = true;
 // 					object.matrixAutoUpdate = true;
 // 					object.updateMatrix();
 					scene.add( object );
+					shirt.visible = true;
+					
 				}
 
 				// manager
@@ -562,12 +564,13 @@
 
 				// cloth mesh
 
-				object = new THREE.Mesh( clothGeometry, clothMaterial );
-				object.position.set( 75, 275, 75 );
-				object.castShadow = true;
-				scene.add( object );
+				shirt = new THREE.Mesh( clothGeometry, clothMaterial );
+				shirt.position.set( -175, 275, -105 );
+				shirt.castShadow = true;
+				shirt.visible = false;
+				scene.add( shirt );
 
-				object.customDepthMaterial = new THREE.MeshDepthMaterial( {
+				shirt.customDepthMaterial = new THREE.MeshDepthMaterial( {
 					depthPacking: THREE.RGBADepthPacking,
 					map: clothTexture,
 					alphaTest: 0.5

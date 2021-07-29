@@ -869,10 +869,17 @@
 				//
 
 				const gui = new GUI();
-				gui.add( params, 'enableWind' ).name( 'Enable wind' );
-				gui.add( params, 'showBall' ).name( 'Show ball' );
-				gui.add( params, 'elevation' ).name( 'Sun height' );
-				gui.add( params, 'togglePins' ).name( 'Toggle pins' );
+				
+				const folderCloth = gui.addFolder( 'Cloth' );
+				folderCloth.add( params, 'enableWind' ).name( 'Enable wind' );
+				folderCloth.add( params, 'showBall' ).name( 'Show ball' );
+				folderCloth.add( params, 'togglePins' ).name( 'Toggle pins' );
+				folderCloth.open()
+				
+				const folderSky = gui.addFolder( 'Sky' );
+				folderSky.add( params, 'elevation', 0, 90, 0.1 ).onChange( updateSun );
+				folderSky.add( params, 'azimuth', - 180, 180, 0.1 ).onChange( updateSun );
+				folderSky.open();
 
 			}
 

@@ -598,25 +598,28 @@
 				
 				if ( params.directionalLight.on ) {
 					
-					const light = new THREE.DirectionalLight( 0xdfebff, 1 );
+// 					const light = new THREE.DirectionalLight( 0xdfebff, 1 );
+					const light = new THREE.PointLight( 0xdfebff, 1 );
 					light.position.set( sun ); // ( 50, 200, -10000 );
-					light.target.position.set( tree.x, tree.y, tree.z ); // ( 50, 200, 100 );
-					light.position.multiplyScalar( 1.3 );
+// 					light.target.position.set( tree.x, tree.y, tree.z ); // ( 50, 200, 100 );
+// 					light.position.multiplyScalar( 1.3 );
 
 					light.castShadow = true;
+					light.receiveShadow = false;
 
 					light.shadow.mapSize.width = 1024;
 					light.shadow.mapSize.height = 1024;
 
-					const d = 1500; // 300;
+// 					const d = 1000; // 300;
 
-					light.shadow.camera.left = - d;
-					light.shadow.camera.right = d;
-					light.shadow.camera.top = d;
-					light.shadow.camera.bottom = - d;
+// 					light.shadow.camera.left = - d;
+// 					light.shadow.camera.right = d;
+// 					light.shadow.camera.top = d;
+// 					light.shadow.camera.bottom = - d;
 
-					light.shadow.camera.far = 25000; // 1000;
-
+					light.shadow.camera.far = 10000; // 1000;
+					light.shadow.camera.near = .25;
+					
 					scene.add( light );
 					
 					if ( params.directionalLight.helper )

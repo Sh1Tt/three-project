@@ -82,9 +82,11 @@
 					helper: true,
 					position: {
 						x: 0,
-						y: 1000,
+						y: -1000,
 						z: -2500
-					}
+					},
+					intensity: 1,
+					color: 0xffb741
 				},
 				elevation: 1.14,
 				azimuth: 180
@@ -604,10 +606,10 @@
 				if ( params.directionalLight.on ) {
 					
 // 					const light = new THREE.DirectionalLight( 0xdfebff, 1 );
-					const light = new THREE.PointLight( 0xdfebff, 1 );
-// 					console.log( sun );
-					const _pos = params.directionalLight.position;
-					light.position.set( _pos.x, _pos.y, _pos.z ); // ( 50, 200, -10000 );
+					const _l = params.directionalLight;
+					const light = new THREE.PointLight( _l.color, _l.intensity );//( 0xdfebff, 1 );
+					
+					light.position.set( _l.position.x, _l.position.y, _l.position.z ); // ( 50, 200, -10000 );
 // 					light.target.position.set( tree.x, tree.y, tree.z ); // ( 50, 200, 100 );
 // 					light.position.multiplyScalar( 1.3 );
 

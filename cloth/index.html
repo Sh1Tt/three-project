@@ -74,7 +74,9 @@
 				showBall: true,
 				togglePins: togglePins,
 				ambientLight: false,
-				directionalLight: true
+				directionalLight: true,
+				elevation: 10,
+				azimuth: 180
 			};
 
 			const DAMPING = 0.03;
@@ -588,17 +590,12 @@
 				skyUniforms[ 'mieCoefficient' ].value = 0.005;
 				skyUniforms[ 'mieDirectionalG' ].value = 0.8;
 
-				const parameters = {
-					elevation: 2,
-					azimuth: 180
-				};
-
 				const pmremGenerator = new THREE.PMREMGenerator( renderer );
 
 				function updateSun() {
 
-					const phi = THREE.MathUtils.degToRad( 90 - parameters.elevation );
-					const theta = THREE.MathUtils.degToRad( parameters.azimuth );
+					const phi = THREE.MathUtils.degToRad( 90 - params.elevation );
+					const theta = THREE.MathUtils.degToRad( params.azimuth );
 
 					sun.setFromSphericalCoords( 1, phi, theta );
 
@@ -874,6 +871,7 @@
 				const gui = new GUI();
 				gui.add( params, 'enableWind' ).name( 'Enable wind' );
 				gui.add( params, 'showBall' ).name( 'Show ball' );
+				gui.add( params, 'elevation' ).name( 'Sun height' );
 				gui.add( params, 'togglePins' ).name( 'Toggle pins' );
 
 			}

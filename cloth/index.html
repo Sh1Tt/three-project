@@ -600,8 +600,8 @@
 					
 // 					const light = new THREE.DirectionalLight( 0xdfebff, 1 );
 					const light = new THREE.PointLight( 0xdfebff, 1 );
-					console.log( sun );
-					light.position.set( sun ); // ( 50, 200, -10000 );
+// 					console.log( sun );
+					light.position.set( sun.x, sun.y, sun.z ); // ( 50, 200, -10000 );
 // 					light.target.position.set( tree.x, tree.y, tree.z ); // ( 50, 200, 100 );
 // 					light.position.multiplyScalar( 1.3 );
 

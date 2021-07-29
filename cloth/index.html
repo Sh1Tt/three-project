@@ -79,7 +79,12 @@
 				},
 				directionalLight: {
 					on: true,
-					helper: true
+					helper: true,
+					position: {
+						x: 0,
+						y: 100,
+						z: 250
+					}
 				},
 				elevation: 1.14,
 				azimuth: 180
@@ -601,7 +606,8 @@
 // 					const light = new THREE.DirectionalLight( 0xdfebff, 1 );
 					const light = new THREE.PointLight( 0xdfebff, 1 );
 // 					console.log( sun );
-					light.position.set( 0, 250, -25000 ); // ( 50, 200, -10000 );
+					const _pos = params.directionalLight.position;
+					light.position.set( _pos.x, _pos.y, _pos.z ); // ( 50, 200, -10000 );
 // 					light.target.position.set( tree.x, tree.y, tree.z ); // ( 50, 200, 100 );
 // 					light.position.multiplyScalar( 1.3 );
 

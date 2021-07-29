@@ -82,11 +82,12 @@
 					helper: true,
 					position: {
 						x: 0,
-						y: 250,
+						y: 114,
 						z: -2500
 					},
 					intensity: 1,
-					color: 0xffb741
+					color: 0xffb741,
+					around: 180
 				},
 				elevation: 1.14,
 				azimuth: 180
@@ -628,7 +629,7 @@
 
 					light.shadow.camera.far = 50000; // 1000;
 					light.shadow.camera.near = 20000;
-					light.shadow.camera.fov = 90;
+					light.shadow.camera.fov = _l.around;
 					
 					scene.add( light );
 					

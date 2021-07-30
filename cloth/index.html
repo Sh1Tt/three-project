@@ -781,9 +781,17 @@
 
 				// model
 
+				function removeProgress()
+				{
+					const dnaLoader = Array.from( document.body.querySelectorAll( `.dna` ) )[0];
+					dnaLoader.parentNode.removeChild( dnaLoader );
+				}
+
 				function updateProgress( percent )
 				{
-					loadingProgressOut.innerText = ( percent < 99 ? `Loading: ${percent}..` : ( percent < 100 ? 'Initializing..' : '' ) );
+					if ( percent === 100 ) removeProgress();
+
+					loadingProgressOut.innerText = ( percent < 99 ? `Loading: ${percent}..` : ( percent < 100 ? 'Initializing..' : 'Done!' ) );
 				}
 
 				function __onProgress( xhr ) {
@@ -792,6 +800,7 @@
 
 						const percentComplete = xhr.loaded / xhr.total * 100;
 						updateProgress( Math.round( percentComplete, 2 ) );
+
 					}
 
 				}

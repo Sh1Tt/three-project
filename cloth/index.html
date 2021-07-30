@@ -59,7 +59,7 @@
 				<!-- Display text -->
 				<div class="progress">
 					<p id="loading-progress">
-						Loading.progress.text
+						Please wait a second..
 					</p>
 				</div>
 			</div>	
@@ -791,7 +791,7 @@
 				{
 					if ( percent === 100 ) removeProgress();
 
-					loadingProgressOut.innerText = ( percent < 99 ? `Loading: ${percent}..` : ( percent < 100 ? 'Initializing..' : 'Done!' ) );
+					loadingProgressOut.innerText = ( percent < 99 ? `Loading: ${percent}%..` : ( percent < 100 ? 'Initializing..' : 'Done!' ) );
 				}
 
 				function __onProgress( xhr ) {

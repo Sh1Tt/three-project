@@ -19,7 +19,7 @@
 	</head>
 
 	<body>
-		<div id="dna-loader" class="anchor">
+		<div id="loader" class="anchor">
 			<div class="dna">
 				<div class="particles" id="blue">
 					<div class="particle blue" id="p_b__00"></div>
@@ -785,8 +785,8 @@
 
 				function removeProgress()
 				{
-					const dnaLoader = Array.from( document.body.querySelectorAll( `.dna` ) )[0];
-					parentNode.removeChild( dnaLoader );
+					const loader = document.body.querySelector( `#loader` );
+					loader.parentNode.removeChild( loader );
 				}
 
 				function updateProgress( percent )

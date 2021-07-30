@@ -59,7 +59,7 @@
 				</div>
 				<!-- Display text -->
 				<div class="progress">
-					<p id="loading-progress">
+					<p id="loader__progress">
 						Please wait a second..
 					</p>
 				</div>
@@ -107,7 +107,9 @@
 				material: 'as12_8.mtl'
 			};
 
-			const loadingProgressOut = document.querySelector( `#loading-progress` );
+			const loader = document.body.querySelector( `#loader` );
+			const loaderProgress = document.body.querySelector( `#loader__progress` );
+			
 
 			/*-----------------------------------------------------------------------------------*
 			 *
@@ -759,7 +761,7 @@
 					object.castShadow = true;
 					object.matrixAutoUpdate = true;
 					object.updateMatrix();
-					removeProgress();
+					hideLoaderProgress();
 					scene.add( object );
 					shirt.visible = true;
 					babyShirt.visible = true;					
@@ -783,15 +785,15 @@
 
 				// model
 
-				function removeProgress()
+				function hideLoaderProgress()
 				{
-					const loader = document.body.querySelector( `#loader` );
-					loader.parentNode.removeChild( loader );
+					loaderProgress.innerText = ''
+					loader.style.visibility = 'collapse';
 				}
 
-				function updateProgress( percent )
+				function updateLoaderProgress( percent )
 				{
-					loadingProgressOut.innerText = ( percent < 99 ? `Loading: ${percent}%..` : ( percent < 100 ? 'Initializing..' : 'Done!' ) );
+					loaderMessage.innerText = ( percent < 99 ? `Loading: ${percent}%..` : ( percent < 100 ? 'Initializing..' : 'Done!' ) );
 				}
 
 				function __onProgress( xhr ) {
@@ -799,7 +801,7 @@
 					if ( xhr.lengthComputable ) {
 
 						const percentComplete = xhr.loaded / xhr.total * 100;
-						updateProgress( Math.round( percentComplete, 2 ) );
+						updateLoaderProgress( Math.round( percentComplete, 2 ) );
 
 					}
 

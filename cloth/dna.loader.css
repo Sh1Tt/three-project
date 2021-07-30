@@ -131,19 +131,63 @@
 }
 
 
+#p_b__00
+{
+	animation: particle-spin-00 4s linear 1.0s backwards infinite;
+}
+
+#p_b__01
+{
+	animation: particle-spin-00 4s linear 1.2s backwards infinite;
+}
+
+#p_r__02
+{
+	animation: particle-spin-00 4s linear 1.4s backwards infinite;
+}
+#p_r__03
+{
+	animation: particle-spin-00 4s linear 1.6s backwards infinite;
+}
+#p_r__04
+{
+	animation: particle-spin-00 4s linear 1.8s backwards infinite;
+}
+#p_r__05
+{
+	animation: particle-spin-00 4s linear 0.0s backwards infinite;
+}
+#p_r__06
+{
+	animation: particle-spin-00 4s linear 0.2s backwards infinite;
+}
+#p_r__07
+{
+	animation: particle-spin-00 4s linear 0.4s backwards infinite;
+}
+#p_r__08
+{
+	animation: particle-spin-00 4s linear 0.6s backwards infinite;
+}
+#p_r__09
+{
+	animation: particle-spin-00 4s linear 0.8s backwards infinite;
+}
+
+
+#r__00
+{
+	animation: rod-spin-00 4s linear 0.0s backwards infinite;
+}
+#r__01
+{
+	animation: rod-spin-00 4s linear 0.2s backwards infinite;
+}
+
+
 /********************************************************************************************************/
 /* ANIMATIONS                                                                                           */
 /********************************************************************************************************/
-
-@KEYFRAMES idle-pos-00
-{
-	0%	{
-			
-		}
-	100%{
-			
-		}
-}
 
 @KEYFRAMES particle-spin-00
 {
@@ -181,120 +225,15 @@
 		}
 }
 
-@KEYFRAMES particle-spin-01
+@KEYFRAMES rod-spin-00
 {
-	  0% { transform: translateY(   75% ); }
-	 17% { 
-	 	transform: translateY(  500% );
-	 	opacity: 1;
-	 }
-	 35% { transform: translateY(  925% ); }
-	 42% { 
-	 	transform: translateY( 1000% ); 
-	 	opacity: .8;
-	 }
-	 49% { transform: translateY(  925% ); }
-	 67% { 
-	 	transform: translateY(  500% );
-	 	opacity: .2;
-	 }
-	 85% { transform: translateY(   75% ); }
-	 92% { 
-	 	transform: translateY(    0% );
-	 	opacity: .8;
-	 }
-	100% { transform: translateY(   75% ); }
+	0%	{
+			transform: scale3d( .5, 7.5, 1 );
+		}
+	50%	{
+			transform: scale3d( .01, .01, 1 );
+		}
+	100%{
+			transform: scale3d( .5, 7.5, 1 );
+		}
 }
-@KEYFRAMES particle-spin-02
-{
-	  0% { transform: translateY(  268% ); }
-	 24% { transform: translateY(  925% ); }
-	 31% { transform: translateY( 1000% ); }
-	 38% { transform: translateY(  925% ); }
-	 74% { transform: translateY(   75% ); }
-	 81% { transform: translateY(    0% ); }
-	 88% { transform: translateY(   75% ); }
-	100% { transform: translateY(  268% ); }
-}
-@KEYFRAMES particle-spin-03
-{
-	  0% { transform: translateY(  537% ); }
-	 12% { transform: translateY(  925% ); }
-	 19% { transform: translateY( 1000% ); }
-	 26% { transform: translateY(  925% ); }
-	 62% { transform: translateY(   75% ); }
-	 69% { transform: translateY(    0% ); }
-	 76% { transform: translateY(   75% ); }
-	100% { transform: translateY(  537% ); }
-}
-@KEYFRAMES particle-spin-04
-{
-	  0% { transform: translateY(  925% ); }
-	  7% { transform: translateY( 1000% ); }
-	 14% { transform: translateY(  925% ); }
-	 50% { transform: translateY(   75% ); }
-	 57% { transform: translateY(    0% ); }
-	 64% { transform: translateY(   75% ); }
-	100% { transform: translateY(  925% ); }
-}
-@KEYFRAMES particle-spin-05
-{
-	  0% { transform: translateY( 1000% ); }
-	  7% { transform: translateY(  925% ); }
-	 43% { transform: translateY(   75% ); }
-	 50% { transform: translateY(    0% ); }
-	 57% { transform: translateY(   75% ); }
-	 93% { transform: translateY(  925% ); }
-	100% { transform: translateY( 1000% ); }
-}
-@KEYFRAMES particle-spin-06
-{
-	  0% { transform: translateY(  925% ); }
-	 36% { transform: translateY(   75% ); }
-	 43% { transform: translateY(    0% ); }
-	 50% { transform: translateY(   75% ); }
-	 86% { transform: translateY(  925% ); }
-	 93% { transform: translateY( 1000% ); }
-	100% { transform: translateY(  925% ); }
-}
-@KEYFRAMES particle-spin-07
-{
-	  0% { transform: translateY(  537% ); }
-	 24% { transform: translateY(   75% ); }
-	 31% { transform: translateY(    0% ); }
-	 38% { transform: translateY(   75% ); }
-	 74% { transform: translateY(  925% ); }
-	 81% { transform: translateY( 1000% ); }
-	 88% { transform: translateY(  925% ); }
-	100% { transform: translateY(  537% ); }
-}
-@KEYFRAMES particle-spin-08
-{
-	  0% { transform: translateY(  268% ); }
-	 12% { transform: translateY(   75% ); }
-	 19% { transform: translateY(    0% ); }
-	 26% { transform: translateY(   75% ); }
-	 62% { transform: translateY(  925% ); }
-	 69% { transform: translateY( 1000% ); }
-	 76% { transform: translateY(  925% ); }
-	100% { transform: translateY(  268% ); }
-}
-@KEYFRAMES particle-spin-09
-{
-	  0% { transform: translateY(   75% ); }
-	  7% { transform: translateY(    0% ); }
-	 14% { transform: translateY(   75% ); }
-	 50% { transform: translateY(  925% ); }
-	 57% { transform: translateY( 1000% ); }
-	 64% { transform: translateY(  925% ); }
-	100% { transform: translateY(   75% ); }
-}
-
-
-
-
-
-
-
-
-

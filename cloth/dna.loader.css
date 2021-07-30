@@ -86,49 +86,49 @@
 /*                                                                                                      */
 /********************************************************************************************************/
 
+
 #p_b__00
 {
-	animation: particle-spin-00 4s linear .0s backwards infinite;
+	animation: particle-spin-00 4s linear 0.0s backwards infinite;
 }
 
 #p_b__01
 {
-	animation: particle-spin-00 4s linear .1s backwards infinite;
+	animation: particle-spin-00 4s linear 0.2s backwards infinite;
 }
 
 #p_b__02
 {
-	animation: particle-spin-00 4s linear .2s backwards infinite;
+	animation: particle-spin-00 4s linear 0.4s backwards infinite;
 }
 #p_b__03
 {
-	animation: particle-spin-00 4s linear .3s backwards infinite;
+	animation: particle-spin-00 4s linear 0.6s backwards infinite;
 }
 #p_b__04
 {
-	animation: particle-spin-00 4s linear .4s backwards infinite;
+	animation: particle-spin-00 4s linear 0.8s backwards infinite;
 }
 #p_b__05
 {
-	animation: particle-spin-00 4s linear .5s backwards infinite;
+	animation: particle-spin-00 4s linear 1.0s backwards infinite;
 }
 #p_b__06
 {
-	animation: particle-spin-00 4s linear .6s backwards infinite;
+	animation: particle-spin-00 4s linear 1.2s backwards infinite;
 }
 #p_b__07
 {
-	animation: particle-spin-00 4s linear .7s backwards infinite;
+	animation: particle-spin-00 4s linear 1.4s backwards infinite;
 }
 #p_b__08
 {
-	animation: particle-spin-00 4s linear .8s backwards infinite;
+	animation: particle-spin-00 4s linear 1.6s backwards infinite;
 }
 #p_b__09
 {
-	animation: particle-spin-00 4s linear .9s backwards infinite;
+	animation: particle-spin-00 4s linear 1.8s backwards infinite;
 }
-
 
 
 /********************************************************************************************************/

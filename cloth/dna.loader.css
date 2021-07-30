@@ -11,7 +11,7 @@
 }
 .dna
 {
-	position: fixed;
+	position: absolute;
 	top: 50vh;
 	height: auto;
 	left: 0;
@@ -19,7 +19,7 @@
 	display: block;
 	z-index: 2798469852695947;
 	transform: scale3d(.75, .75, 1);
-    filter: drop-shadow(0 1px 36px white);
+    	filter: drop-shadow(0 1px 36px white);
 }
 .particles, .rods
 {

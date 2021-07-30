@@ -181,6 +181,38 @@
 {
 	animation: rod-spin-00 4s linear 0.2s backwards infinite;
 }
+#r__02
+{
+	animation: rod-spin-00 4s linear 0.4s backwards infinite;
+}
+#r__03
+{
+	animation: rod-spin-00 4s linear 0.6s backwards infinite;
+}
+#r__04
+{
+	animation: rod-spin-00 4s linear 0.8s backwards infinite;
+}
+#r__05
+{
+	animation: rod-spin-00 4s linear 1.0s backwards infinite;
+}
+#r__06
+{
+	animation: rod-spin-00 4s linear 1.2s backwards infinite;
+}
+#r__07
+{
+	animation: rod-spin-00 4s linear 1.4s backwards infinite;
+}
+#r__08
+{
+	animation: rod-spin-00 4s linear 1.6s backwards infinite;
+}
+#r__09
+{
+	animation: rod-spin-00 4s linear 1.8s backwards infinite;
+}
 
 
 /********************************************************************************************************/

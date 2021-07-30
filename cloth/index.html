@@ -83,7 +83,9 @@
 			import { OBJLoader } from 'https://threejs.org/examples/jsm/loaders/OBJLoader.js';
 			import { MTLLoader } from 'https://threejs.org/examples/jsm/loaders/MTLLoader.js';
 						
-			// -- custom deps.
+			
+			/*-----------------------------------------------------------------------------------*/
+
 			const product =
 			[
 				{
@@ -96,16 +98,18 @@
 					url: 'http://cdn.mauricestolk.hns.to/umitea_upsidedown.jpg'
 				}
 			];
+
 			
 			const treeModel = {
 				path: 'http://cdn.mauricestolk.hns.to/model/koenigii-tree/',
 				object: 'as12_8.obj',
 				material: 'as12_8.mtl'
 			};
-			const koenigiiTree = 'http://cdn.mauricestolk.hns.to/model/koenigii-tree/as12_8.obj';
-// 			const treeTexture = 'http://cdn.mauricestolk.hns.to/model/tree-32/1236954294_31.jpg';	
-			
-			/*
+
+			const loadingProgressOut = document.querySelector( `#loading-progress` );
+
+			/*-----------------------------------------------------------------------------------*
+			 *
 			 * Cloth Simulation using a relaxed constraints solver
 			 */
 
@@ -777,13 +781,17 @@
 
 				// model
 
+				function updateProgress( percent )
+				{
+					loadingProgressOut.innerText = ( percent < 99 ? `Loading: ${percent}..` : ( percent < 100 ? 'Initializing..' : '' ) );
+				}
+
 				function __onProgress( xhr ) {
 
 					if ( xhr.lengthComputable ) {
 
 						const percentComplete = xhr.loaded / xhr.total * 100;
-						console.log( 'model ' + Math.round( percentComplete, 2 ) + '% downloaded' );
-
+						updateProgress( Math.round( percentComplete, 2 ) );
 					}
 
 				}

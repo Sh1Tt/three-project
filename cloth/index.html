@@ -757,8 +757,9 @@
 					object.scale.set( tree.scale, tree.scale, tree.scale ); // _s, _s, _s );
 					object.receiveShadow = true;
 					object.castShadow = true;
-// 					object.matrixAutoUpdate = true;
-// 					object.updateMatrix();
+					object.matrixAutoUpdate = true;
+					object.updateMatrix();
+					removeProgress();
 					scene.add( object );
 					shirt.visible = true;
 					babyShirt.visible = true;					
@@ -785,13 +786,11 @@
 				function removeProgress()
 				{
 					const dnaLoader = Array.from( document.body.querySelectorAll( `.dna` ) )[0];
-					dnaLoader.parentNode().removeChild( dnaLoader );
+					parentNode.removeChild( dnaLoader );
 				}
 
 				function updateProgress( percent )
 				{
-					if ( percent === 100 ) removeProgress();
-
 					loadingProgressOut.innerText = ( percent < 99 ? `Loading: ${percent}%..` : ( percent < 100 ? 'Initializing..' : 'Done!' ) );
 				}
 

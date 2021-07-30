@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>three.js webgl - cloth simulation</title>
+		<title>Natural Mystic Shop | 3D Market</title>
+		<meta name="description" content="A 3D animated online shop with handmade batik designs and psychedelic clothing.">
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="https://threejs.org/examples/main.css">
@@ -65,8 +66,8 @@
 			</div>	
 		</div>
 		<!-- start page 		 -->
-		<div id="info">Simple Cloth Simulation<br/>
-			Verlet integration with relaxed constraints<br/>
+		<div id="info">Natural Mystic Market<br/>
+			<!-- Verlet integration with relaxed constraints -->Welcome to the future!<br/>
 		</div>
 		
 		<script type="module">
@@ -784,7 +785,7 @@
 				function removeProgress()
 				{
 					const dnaLoader = Array.from( document.body.querySelectorAll( `.dna` ) )[0];
-					dnaLoader.parentNode.removeChild( dnaLoader );
+					dnaLoader.parentNode().removeChild( dnaLoader );
 				}
 
 				function updateProgress( percent )
@@ -967,18 +968,18 @@
 
 				//
 
-				const gui = new GUI();
+				// const gui = new GUI();
 				
-				const folderCloth = gui.addFolder( 'Cloth' );
-				folderCloth.add( params, 'enableWind' ).name( 'Enable wind' );
-				folderCloth.add( params, 'showBall' ).name( 'Show ball' );
-				folderCloth.add( params, 'togglePins' ).name( 'Toggle pins' );
-				folderCloth.open()
+				// const folderCloth = gui.addFolder( 'Cloth' );
+				// folderCloth.add( params, 'enableWind' ).name( 'Enable wind' );
+				// folderCloth.add( params, 'showBall' ).name( 'Show ball' );
+				// folderCloth.add( params, 'togglePins' ).name( 'Toggle pins' );
+				// folderCloth.open()
 				
-				const folderSky = gui.addFolder( 'Sky' );
-				folderSky.add( params, 'elevation', 0, 90, 0.1 ).onChange( updateSun );
-				folderSky.add( params, 'azimuth', - 180, 180, 0.1 ).onChange( updateSun );
-				folderSky.open();
+				// const folderSky = gui.addFolder( 'Sky' );
+				// folderSky.add( params, 'elevation', 0, 90, 0.1 ).onChange( updateSun );
+				// folderSky.add( params, 'azimuth', - 180, 180, 0.1 ).onChange( updateSun );
+				// folderSky.open();
 
 			}
 

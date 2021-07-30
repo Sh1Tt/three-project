@@ -131,16 +131,14 @@
 }
 
 
-#p_b__00
+#p_r__00
 {
 	animation: particle-spin-00 4s linear 1.0s backwards infinite;
 }
-
-#p_b__01
+#p_r__01
 {
 	animation: particle-spin-00 4s linear 1.2s backwards infinite;
 }
-
 #p_r__02
 {
 	animation: particle-spin-00 4s linear 1.4s backwards infinite;

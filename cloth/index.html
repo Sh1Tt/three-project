@@ -793,7 +793,7 @@
 
 				function updateLoaderProgress( percent )
 				{
-					loaderMessage.innerText = ( percent < 99 ? `Loading: ${percent}%..` : ( percent < 100 ? 'Initializing..' : 'Done!' ) );
+					loaderProgress.innerText = ( percent < 99 ? `Loading: ${percent}%..` : ( percent < 100 ? 'Initializing..' : 'Done!' ) );
 				}
 
 				function __onProgress( xhr ) {

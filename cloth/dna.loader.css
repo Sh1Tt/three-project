@@ -259,30 +259,30 @@
 {
 	0%	{
 			transform: scale3d( .375, 7.5, 1 );
-			opacity: .8;
+			opacity: .6;
 		}
 	20%	{
 			transform: scale3d( .01, .01, 1 );
-			opacity: .2;
+			opacity: .3;
 		}
 	30%	{
 			transform: scale3d( .01, .01, 1 );
-			opacity: .2;
+			opacity: .3;
 		}
 	50%	{
 			transform: scale3d( .375, 7.5, 1 );
-			opacity: .8;
+			opacity: .6;
 		}
 	70%	{
 			transform: scale3d( .01, .01, 1 );
-			opacity: .2;
+			opacity: .3;
 		}
 	80%	{
 			transform: scale3d( .01, .01, 1 );
-			opacity: .2;
+			opacity: .3;
 		}
 	100%{
 			transform: scale3d( .375, 7.5, 1 );
-			opacity: .8;
+			opacity: .6;
 		}
 }

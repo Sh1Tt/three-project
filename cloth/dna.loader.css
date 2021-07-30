@@ -74,7 +74,7 @@
     border-radius: 50%;
     max-width: .25vmin;
     overflow: hidden;
-    transform: scale3d(.5, 7.5, 1);
+    transform: scale3d(.375, 7.5, 1);
     opacity: .8;
     filter: drop-shadow( 0 0 2vmin cornflowerblue );
 
@@ -226,18 +226,31 @@
 @KEYFRAMES rod-spin-00
 {
 	0%	{
-			transform: scale3d( .5, 7.5, 1 );
+			transform: scale3d( .375, 7.5, 1 );
+			opacity: .8;
 		}
-	25%	{
+	20%	{
 			transform: scale3d( .01, .01, 1 );
+			opacity: .2;
+		}
+	30%	{
+			transform: scale3d( .01, .01, 1 );
+			opacity: .2;
 		}
 	50%	{
-			transform: scale3d( .5, 7.5, 1 );
+			transform: scale3d( .375, 7.5, 1 );
+			opacity: .8;
 		}
-	75%	{
+	70%	{
 			transform: scale3d( .01, .01, 1 );
+			opacity: .2;
+		}
+	80%	{
+			transform: scale3d( .01, .01, 1 );
+			opacity: .2;
 		}
 	100%{
-			transform: scale3d( .5, 7.5, 1 );
+			transform: scale3d( .375, 7.5, 1 );
+			opacity: .8;
 		}
 }
